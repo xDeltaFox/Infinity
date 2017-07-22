@@ -1,0 +1,16 @@
+{
+    "token": "TOKEN",
+    "shardCount": 0,
+    "botVersion": "",
+    "prefix": ">",
+    "adminIds": [""],
+    "logChannel": "",
+    "logGuild": "",
+    "logDestroyer": "",
+    "logTimestamp": false,
+    "cleverbot": false,
+    "inviteLink": "",
+    "errorMessage": "Shit, an error. Report this to Noculi and tell him he sucks.",
+    "bannedGuildIds": [],
+    "whitelistedGuildIds": []
+}
