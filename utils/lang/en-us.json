@@ -4,5 +4,31 @@
         "founded": "Year founded",
         "money": "Money",
         "populacao": "Population"
-    }
+    },
+    "err": {
+        "text1": "Dude, mention somebody.",
+        "text2": "Dude, mention somebody.",
+        "text3": "Dude, mention somebody."
+    },
+    "ameaça": ":gun:  |  **Gravity of Crime: (${numero}%)**\n**${message.mentions[0].username}** ${aleatorio[0]}",
+    "ameaçatexto": {
+        "texto1": "Is a nobody. Then nothing will be done, to your luck, you bastard.",
+        "texto2": "Is suspected of a crime that occurred a few days ago. Then our magnifying glasses are in your tail, in case you decide to kill someone.",
+        "texto3": "Is planning the domination of the world. It's good for someone to stop it, before I set fire to fucking whole. :fire:",
+        "texto4": "Is the most wanted person of the federal police. Bludgeon has a lot of homeless people online, and nobody fucking does.",
+        "texto5": "Burn it, burn it up. :Fire: none sought by Interpol will pass me, and get away with it, you shit."
+    },
+    "ball": {
+
+    },
+    "ban": {
+        "text1": "Bani ${ment[0].username}, and set fire to his messages. :Fire: \nReason: $ {content [2]}",
+        "text2": ":No_entry_sign: Errow, mention somebody, beast."
+    },
+    "betroll": {
+        "text1": "**##### Time to Check! #####** \nYour numbers were: ${one} - ${two} - ${three} \n ##### Double, Parabens! ##### \n $ {message.author.mention}, you earned: ${content[1]*2} Rows",
+        "text2": "**##### Time to Check! #####** \nYour numbers were: ${one} - ${two} - ${three} \n ${message.author.mention}, not this time, you lost: ${content[1]} Rows",
+        "text3": "${message.author.mention} - You do not have enough money."
+    },
+    "kick": "I put ${ment[0].username}, out with my magic boot. :Boot: \nReason: ${content[2]}"
 }

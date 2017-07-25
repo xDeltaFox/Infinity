@@ -4,5 +4,31 @@
         "founded": "Ano fundado",
         "money": "Dinheiro",
         "populacao": "População"
-    }
+    },
+    "err": {
+        "text1": "Burro, mencione alguém.",
+        "text2": ":fire: Vou te queimar, se continuar fazendo coisa que não deve. tem que ter a permissão `manageGuild`",
+        "text3": ":no_entry_sign: Errow, mencione alguém, besta."
+    },
+    "ameaça": ":gun:  |  **Gravidade do Crime: (${numero}%)**\n**${message.mentions[0].username}** ${aleatorio[0]}",
+    "ameaçatexto": {
+        "texto1": "é um ninguém. Então nada será feito, pra sua sorte, seu safado.",
+        "texto2": "é suspeito de um crime que ocorreu, há uns dias. Então nosso umpas lupas ficaram na sua cola, pro caso de você resolva matar alguém.",
+        "texto3": "está planejando a dominação do mundo. É bom alguém para-lo, antes que eu taque fogo na porra toda. :fire:",
+        "texto4": "é a pessoa mais procurada da policia federal. Cacete tem um monte de vagabundos online, e ninguém faz porra nenhuma.",
+        "texto5": "queime, queime descraçado. :fire: nenhum procurado pela Interpol vai passa por mim, e ficar impune, seu merda."
+    },
+    "ball": {
+
+    },
+    "ban": {
+        "text1": "Bani ${ment[0].username}, e taquei fogo nas mensagens dele. :fire:\nRazão: ${content[2]}",
+        "text2": ":no_entry_sign: Errow, mencione alguém, besta."
+    },
+    "betroll": {
+        "text1": "**##### Hora de checar! #####**\nSeus numeros foram: ${one} - ${two} - ${three}\n##### Duplos, Parábens! #####\n${message.author.mention}, você ganhou: ${content[1]*2} rows",
+        "text2": "**##### Hora de checar! #####**\nSeus numeros foram: ${one} - ${two} - ${three}\n${message.author.mention}, não foi dessa vez, você perdeu: ${content[1]} rows",
+        "text3": "${message.author.mention} - Você não tem dinheiro suficiente."
+    },
+    "kick": "Botei ${ment[0].username}, pra fora com minha bota magica. :boot:\nRazão: ${content[2]}"
 }
