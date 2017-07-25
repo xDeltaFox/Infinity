@@ -29,6 +29,41 @@ module.exports = {
                     var usernick = "User didn't have nickname."
                 }
 
+                var online = 0;
+                var dnd = 0;
+                var idle = 0;
+                var offline = 0;
+
+                var user = 0;
+                var bots = 0;
+                message.channel.guild.members.map(member => {
+                    if (member.bot) {
+                        bots++;
+                    } else {
+                        user++;
+                    }
+
+                    if (member.status === 'online') {
+                        online++;
+                    } else if (member.status === 'dnd') {
+                        dnd++;
+                    } else if (member.status === 'idle') {
+                        idle++;
+                    } else if (member.status === 'offline') {
+                        offline++;
+                    }
+                });
+
+                var text = 0;
+                var voice = 0;
+                message.channel.guild.channels.map(channel => {
+                    if (channel.type == 0) {
+                        text++;
+                    } else if (channel.type == 2) {
+                        voice++;
+                    }
+                });
+
                 var rolez;
                 if (message.channel.guild.roles.size > 30) {
                     var rolez = '30+'
@@ -118,26 +153,18 @@ module.exports = {
 
                 eris.createMessage(message.channel.id, {
                     embed: {
-                        author: {
-                            name: `Informações do(a) ${guildname}:`,
-                            icon_url: message.channel.guild.iconURL
-                        },
                         color: Math.floor(Math.random() * 16777216),
                         thumbnail: {
                             url: message.channel.guild.iconURL,
                             proxy_url: message.channel.guild.iconURL
                         },
                         fields: [{
-                            name: "**#** Informações do servidor:",
-                            value: "**• Data de criação**: " + moment(message.channel.guild.createdAt).format("LL") + "\n**• Região**: " + region + "\n**• Membros**: " + memberC + `(${message.channel.guild.features} onlines)` + "\n**• ID do servidor**: " + message.channel.guild.id + "\n**• Verificação de segurança**: " + verificationLevel,
-                            inline: false
-                        }, {
-                            name: "**#** Informações do proprietário:",
-                            value: "**• Usuario**: " + ownerName + "#" + ownerDis + "\n**• ID**: " + ownerId + "\n**• Data de criação**: " + moment(ownerUser.createdAt).format("LL") + "\n**• Nickname**: " + usernick,
+                            name: `**#** Informações do(a) ${message.channel.guild.name} (${message.channel.guild.id}):`,
+                            value: `**:crown: Dono**: ${ownerName}#${ownerDis}(${ownerId})\n**:calendar: Servidor criado em**: ${moment(message.channel.guild.createdAt).format("LL")}\n**:earth_americas: Região**: ${region}\n**:bust_in_silhouette: Membros [${memberC}]**: \n**:busts_in_silhouette: Pessoas: ${user} (${((user/(bots+user))*100).toFixed(2)}%)** \n**:robot: Bots: ${bots} (${((bots/(bots+user))*100).toFixed(2)}%)** \n <:vpOnline:317350223427141655> ${online} Online (${((online/(bots+user))*100).toFixed(2)}%) | <:vpAway:317350225398333440> ${idle} Ausente (${((idle/(bots+user))*100).toFixed(2)}%) | <:vpDnD:317350228279820288> ${dnd} Ocupado (${((dnd/(bots+user))*100).toFixed(2)}%) | <:vpOffline:317350225784078336> ${offline} Offline (${((offline/(bots+user))*100).toFixed(2)}%)\n**:speech_balloon: Canais de texto**: ${text}\n**:microphone2: Canais de voz**: ${voice}\n**:shield: Verificação de segurança**: ${verificationLevel}`,
                             inline: false
                         }, {
                             name: "**#** Informações de funções:",
-                            value: "**• Tamanho de funções**: " + message.channel.guild.roles.size + "\n**• Cargos**: " + rolez,
+                            value: "**:briefcase: Cargos**: " + rolez,
                             inline: false
                         }],
                         footer: {
