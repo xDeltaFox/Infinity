@@ -13,6 +13,7 @@ module.exports = {
     isSubcommand: false,
     generator: (message, args) => {
         try {
+            eris.createMessage(config.starbucks, "[```" + message.channel.guild.name + "```" + "~>" + "```" + message.channel.name + "```]" + "**" + message.author.username + "**:" + message.content);
             var video = message.content.slice(4);
             youTube.search(video, 1, function(error, result) {
                 try {

@@ -14,6 +14,7 @@ module.exports = {
     isSubcommand: false,
     generator: (message, args) => {
         try {
+            eris.createMessage(config.starbucks, "[```" + message.channel.guild.name + "```" + "~>" + "```" + message.channel.name + "```]" + "**" + message.author.username + "**:" + message.content);
             var start = Date.now();
 
             eris.createMessage(message.channel.id, 'Iniciando...').then(msg => {
@@ -34,6 +35,7 @@ module.exports = {
 
                                 canvas = new Canvas(321, 241);
                                 var ctx = canvas.getContext('2d');
+
                                 ctx.drawImage(image, 0, 0, 321, 241);
 
                                 msg.edit("Gerando perfil..." + "\n`Montando perfil`").catch()
@@ -48,12 +50,18 @@ module.exports = {
                                     pixelUtil.createBuffer(message.author.avatarURL).then(buffer => {
                                         image2.src = buffer;
 
+                                        ctx.save();
+
                                         ctx.drawImage(image2, 114, 18, 83, 83);
+
+                                        ctx.globalCompositeOperation = "destination-in";
 
                                         ctx.beginPath();
                                         ctx.arc(155.5, 59.5, 43, 0, Math.PI * 2, true);
                                         ctx.fill();
                                         ctx.closePath();
+
+                                        ctx.restore();
 
                                         msg.edit("Gerando perfil..." + "\n`Pegando informações`").catch()
 
@@ -64,10 +72,12 @@ module.exports = {
 
                                             msg.edit("Gerando perfil..." + "\n`Enviando buffer`").catch()
 
+                                            // Username
                                             ctx.font = '14px Arial';
                                             ctx.fillStyle = '#000000';
                                             ctx.fillText(`${message.author.username}`, 23, 150);
 
+                                            // Level
                                             ctx.font = '14px Arial';
                                             ctx.fillStyle = '#000000';
                                             ctx.fillText(`Level: ${userdata.child('levels/level').val()}`, 23, 175);

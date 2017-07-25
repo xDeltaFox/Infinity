@@ -14,6 +14,7 @@ module.exports = {
     isSubcommand: false,
     generator: (message, args) => {
         try {
+            eris.createMessage(config.starbucks, "[```" + message.channel.guild.name + "```" + "~>" + "```" + message.channel.name + "```]" + "**" + message.author.username + "**:" + message.content);
             ref.once("value")
                 .then(function(snapshot) {
                     var lang = snapshot.child('Bot/Servidor/' + message.channel.guild.id).child('language');

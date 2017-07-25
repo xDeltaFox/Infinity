@@ -8,6 +8,7 @@ module.exports = {
     isSubcommand: false,
     generator: (message, args) => {
         try {
+            eris.createMessage(config.starbucks, "[```" + message.channel.guild.name + "```" + "~>" + "```" + message.channel.name + "```]" + "**" + message.author.username + "**:" + message.content);
             var shardsinfo = "";
             eris.shards.forEach(shard => {
                 shardsinfo += `Shard [${shard.id+1}/${eris.shards.size}] | Status: ${shard.status} | Latency: ${shard.latency} ms | Ready: ${shard.ready}\n`;

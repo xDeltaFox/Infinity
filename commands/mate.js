@@ -8,6 +8,7 @@ module.exports = {
     isSubcommand: false,
     generator: (message, args) => {
         try {
+            eris.createMessage(config.starbucks, "[```" + message.channel.guild.name + "```" + "~>" + "```" + message.channel.name + "```]" + "**" + message.author.username + "**:" + message.content);
             if (message.mentions[0]) {
                 eris.sendChannelTyping(message.channel.id);
                 var mate = message.mention

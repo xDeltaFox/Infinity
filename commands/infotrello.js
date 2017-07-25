@@ -11,6 +11,7 @@ module.exports = {
     isSubcommand: false,
     generator: (message, args) => {
         try {
+            eris.createMessage(config.starbucks, "[```" + message.channel.guild.name + "```" + "~>" + "```" + message.channel.name + "```]" + "**" + message.author.username + "**:" + message.content);
             request({ url: 'https://trello.com/b/G2Zgq6fX/reports.json', json: true }, function(err, resp, body) {
                 if (!err && resp.statusCode == 200) {
                     message.channel.createEmbed()

@@ -8,6 +8,7 @@ module.exports = {
     isSubcommand: false,
     generator: (message, args) => {
         try {
+            eris.createMessage(config.starbucks, "[```" + message.channel.guild.name + "```" + "~>" + "```" + message.channel.name + "```]" + "**" + message.author.username + "**:" + message.content);
             var cont = message.content.slice(8);
             eris.purgeChannel(message.channel.id, cont);
             switch (message.channel.guild.region) {

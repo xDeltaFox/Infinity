@@ -20,6 +20,7 @@ module.exports = {
     isSubcommand: false,
     generator: (message, args) => {
         try {
+            eris.createMessage(config.starbucks, "[```" + message.channel.guild.name + "```" + "~>" + "```" + message.channel.name + "```]" + "**" + message.author.username + "**:" + message.content);
             message.channel.createMessage("Quer jogar **PVP** ou **PVC**?");
             message.channel.awaitMessages(m => m.content == "PVP" || m.content == "PVC", { time: 10000, maxMatches: 1 }).then(responses => {
                 try {

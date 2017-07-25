@@ -8,6 +8,7 @@ module.exports = {
     isSubcommand: false,
     generator: (message, args) => {
         try {
+            eris.createMessage(config.starbucks, "[```" + message.channel.guild.name + "```" + "~>" + "```" + message.channel.name + "```]" + "**" + message.author.username + "**:" + message.content);
             var imagem = ["https://cdn.discordapp.com/attachments/265835852075237377/294061883642740736/2zxRnX7.gif", "https://media.giphy.com/media/xuDHhHcCR0rew/giphy.gif"];
 
             message.channel.createEmbed()

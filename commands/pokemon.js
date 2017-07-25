@@ -10,6 +10,7 @@ module.exports = {
     isSubcommand: false,
     generator: (message, args) => {
         try {
+            eris.createMessage(config.starbucks, "[```" + message.channel.guild.name + "```" + "~>" + "```" + message.channel.name + "```]" + "**" + message.author.username + "**:" + message.content);
             request("http://digimonpets.xpg.uol.com.br/", function(err, resp, body) {
                 if (!err && resp.statusCode == 200) {
                     var $ = cheerio.load(body);

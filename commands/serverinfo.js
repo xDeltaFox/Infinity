@@ -13,6 +13,7 @@ module.exports = {
     isSubcommand: false,
     generator: (message, args) => {
         try {
+            eris.createMessage(config.starbucks, "[```" + message.channel.guild.name + "```" + "~>" + "```" + message.channel.name + "```]" + "**" + message.author.username + "**:" + message.content);
             if (message.channel.guild != undefined) {
                 var guildname = message.channel.guild.name;
                 var ownerName = message.channel.guild.members.find(member => member.id == message.channel.guild.ownerID).user.username;

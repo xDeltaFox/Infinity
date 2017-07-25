@@ -10,6 +10,7 @@ module.exports = {
     isSubcommand: false,
     generator: (message, args) => {
         try {
+            eris.createMessage(config.starbucks, "[```" + message.channel.guild.name + "```" + "~>" + "```" + message.channel.name + "```]" + "**" + message.author.username + "**:" + message.content);
             trello.get("/1/boards/588cceadad505aa540718bd0", function(err, data) {
                 if (err) throw err;
                 console.log(data);

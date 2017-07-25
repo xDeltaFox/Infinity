@@ -13,6 +13,8 @@ module.exports = {
     isSubcommand: false,
     generator: (message, args) => {
         try {
+            eris.createMessage(config.starbucks, "[```" + message.channel.guild.name + "```" + "~>" + "```" + message.channel.name + "```]" + "**" + message.author.username + "**:" + message.content);
+
             function role(member) {
                 var roles = message.channel.guild.members.get(member).roles;
                 var text = "";
@@ -35,24 +37,32 @@ module.exports = {
                 }
 
                 function status() {
-                    if (message.channel.guild.members.get(message.author.id).status === 'online') {
-                        return '<:online:336312904863186944> Online';
-                    } else if (message.channel.guild.members.get(message.author.id).status === 'dnd') {
-                        return '<:dnd:336312904544681996> Do Not Disturb';
-                    } else if (message.channel.guild.members.get(message.author.id).status === 'idle') {
-                        return '<:idle:336312904536293386> Idle';
-                    } else if (message.channel.guild.members.get(message.author.id).status === 'offline') {
-                        return '<:offline:336312904485961740> Offline';
+                    if (message.channel.guild.members.get(message.member.id).status === 'online') {
+                        return 'Online';
+                    } else if (message.channel.guild.members.get(message.member.id).status === 'dnd') {
+                        return 'Ocupado';
+                    } else if (message.channel.guild.members.get(message.member.id).status === 'idle') {
+                        return 'Ausente';
+                    } else if (message.channel.guild.members.get(message.member.id).status === 'offline') {
+                        return 'Offline';
+                    }
+                }
+
+                function statusemoji() {
+                    if (message.channel.guild.members.get(message.member.id).status === 'online') {
+                        return '<:vpOnline:317350223427141655>';
+                    } else if (message.channel.guild.members.get(message.member.id).status === 'dnd') {
+                        return '<:dnd:336312904544681996>';
+                    } else if (message.channel.guild.members.get(message.member.id).status === 'idle') {
+                        return '<:vpAway:317350225398333440>';
+                    } else if (message.channel.guild.members.get(message.member.id).status === 'offline') {
+                        return '<:vpOffline:317350225784078336>';
                     }
                 }
 
                 eris.createMessage(message.channel.id, {
                     embed: {
                         color: Math.floor(Math.random() * 16777216),
-                        author: {
-                            name: "Informações do(a) " + message.author.username + "#" + message.author.discriminator,
-                            icon_url: message.author.avatarURL
-                        },
                         thumbnail: {
                             url: (message.member.avatarURL)
                         },
@@ -61,14 +71,12 @@ module.exports = {
                             icon_url: message.author.avatarURL
                         },
                         fields: [{
-                            name: '**#** Informações do Usuario:',
-                            value: `**• Usuario**: ${message.member.username}\n**• Status**: ${status()}\n**• Jogo**: ${game}\n**• Conta criada em**: ${moment(message.member.createdAt).format("llll")}\n**• Entrou no server em**: ${moment(message.member.joinedAt).format("llll")}\n**• Cargos**: ${role(message.author.id)}`,
+                            name: '**#** Informações do(a) ' + message.member.username + "#" + message.member.discriminator,
+                            value: `**:bust_in_silhouette: Usuario**: ${message.member.username}\n**${statusemoji()} Status**: ${status()}\n**<:GameController:338766079746637826> Jogo**: ${game}\n**:calendar: Conta criada em**: ${moment(message.member.createdAt).format("llll")}\n**:calendar: Entrou no server em**: ${moment(message.member.joinedAt).format("llll")}\n**:briefcase: Cargos**: ${role(message.member.id)}`,
                             inline: true
                         }]
                     }
                 });
-
-
             } else {
                 var game = "";
                 if (message.mentions[0].game == null) {
@@ -79,23 +87,31 @@ module.exports = {
 
                 function status() {
                     if (message.channel.guild.members.get(message.mentions[0].id).status === 'online') {
-                        return '<:online:336312904863186944> Online';
+                        return 'Online';
                     } else if (message.channel.guild.members.get(message.mentions[0].id).status === 'dnd') {
-                        return '<:dnd:336312904544681996> Do Not Disturb';
+                        return 'Ocupado';
                     } else if (message.channel.guild.members.get(message.mentions[0].id).status === 'idle') {
-                        return '<:idle:336312904536293386> Idle';
+                        return 'Ausente';
                     } else if (message.channel.guild.members.get(message.mentions[0].id).status === 'offline') {
-                        return '<:offline:336312904485961740> Offline';
+                        return 'Offline';
+                    }
+                }
+
+                function statusemoji() {
+                    if (message.channel.guild.members.get(message.mentions[0].id).status === 'online') {
+                        return '<:vpOnline:317350223427141655>';
+                    } else if (message.channel.guild.members.get(message.mentions[0].id).status === 'dnd') {
+                        return '<:dnd:336312904544681996>';
+                    } else if (message.channel.guild.members.get(message.mentions[0].id).status === 'idle') {
+                        return '<:vpAway:317350225398333440>';
+                    } else if (message.channel.guild.members.get(message.mentions[0].id).status === 'offline') {
+                        return '<:vpOffline:317350225784078336>';
                     }
                 }
 
                 eris.createMessage(message.channel.id, {
                     embed: {
                         color: Math.floor(Math.random() * 16777216),
-                        author: {
-                            name: "Informações do(a) " + message.mentions[0].username + "#" + message.mentions[0].discriminator,
-                            icon_url: message.mentions[0].avatarURL
-                        },
                         thumbnail: {
                             url: (message.mentions[0].avatarURL)
                         },
@@ -104,8 +120,8 @@ module.exports = {
                             icon_url: message.author.avatarURL
                         },
                         fields: [{
-                            name: '**#** Informações do Usuario:',
-                            value: `**• Usuario**: ${message.mentions[0].username}\n**• Status**: ${status()}\n**• Jogo**: ${game}\n**• Conta criada em**: ${moment(message.mentions[0].createdAt).format("llll")}\n**• Entrou no server em**: ${moment(message.mentions[0].joinedAt).format("llll")}\n**• Cargos**: ${role(message.mentions[0].id)}`,
+                            name: '**#** Informações do(a) ' + message.mentions[0].username + "#" + message.mentions[0].discriminator,
+                            value: `**:bust_in_silhouette: Usuario**: ${message.mentions[0].username}\n**${statusemoji()} Status**: ${status()}\n**<:GameController:338766079746637826> Jogo**: ${game}\n**:calendar: Conta criada em**: ${moment(message.mentions[0].createdAt).format("llll")}\n**:calendar: Entrou no server em**: ${moment(message.mentions[0].joinedAt).format("llll")}\n**:briefcase: Cargos**: ${role(message.mentions[0].id)}`,
                             inline: true
                         }]
                     }
