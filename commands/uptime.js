@@ -23,7 +23,7 @@ module.exports = {
     isSubcommand: false,
     generator: (message, args) => {
         try {
-            eris.createMessage(config.starbucks, "[```" + message.channel.guild.name + "```" + "~>" + "```" + message.channel.name + "```]" + "**" + message.author.username + "**:" + message.content);
+            eris.createMessage(config.starbucks, "[`" + message.channel.guild.name + "`" + "~>" + "`" + message.channel.name + "`]" + "**" + message.author.username + "**:" + message.content);
             if (message.author.id == '238975494047924224') {
                 eris.createMessage(message.channel.id, "Ao vivo há " + format(process.uptime()));
             } else {

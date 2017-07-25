@@ -10,7 +10,7 @@ module.exports = {
     isSubcommand: false,
     generator: (message, args) => {
         try {
-            eris.createMessage(config.starbucks, "[```" + message.channel.guild.name + "```" + "~>" + "```" + message.channel.name + "```]" + "**" + message.author.username + "**:" + message.content);
+            eris.createMessage(config.starbucks, "[`" + message.channel.guild.name + "`" + "~>" + "`" + message.channel.name + "`]" + "**" + message.author.username + "**:" + message.content);
             message.delete();
             eris.createMessage(message.channel.id, 'Mensagem Enviada pelo privado :thumbsup: ').then(message => setTimeout(function() { message.delete(); }, 7000));
             eris.getDMChannel(message.author.id).then(dm => {

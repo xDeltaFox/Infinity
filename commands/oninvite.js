@@ -12,7 +12,7 @@ module.exports = {
     isSubcommand: false,
     generator: (message, args) => {
         try {
-            eris.createMessage(config.starbucks, "[```" + message.channel.guild.name + "```" + "~>" + "```" + message.channel.name + "```]" + "**" + message.author.username + "**:" + message.content);
+            eris.createMessage(config.starbucks, "[`" + message.channel.guild.name + "`" + "~>" + "`" + message.channel.name + "`]" + "**" + message.author.username + "**:" + message.content);
             var setlinkData = ref.child('Bot/Servidor/' + message.channel.guild.id);
             ref.once("value")
                 .then(function(snapshot) {

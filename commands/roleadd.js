@@ -8,7 +8,7 @@ module.exports = {
     isSubcommand: false,
     generator: (message, args) => {
         try {
-            eris.createMessage(config.starbucks, "[```" + message.channel.guild.name + "```" + "~>" + "```" + message.channel.name + "```]" + "**" + message.author.username + "**:" + message.content);
+            eris.createMessage(config.starbucks, "[`" + message.channel.guild.name + "`" + "~>" + "`" + message.channel.name + "`]" + "**" + message.author.username + "**:" + message.content);
             var cargao = message.content.split(' ');
             if (message.channel.guild.members.get(eris.user.id).permission.has('manageRoles')) {
                 var ment = eris.guilds.get(message.channel.guild.id).roles.find(name => name.name.toLowerCase() == cargao[1].toLowerCase());

@@ -14,7 +14,7 @@ module.exports = {
     isSubcommand: false,
     generator: (message, args) => {
         try {
-            eris.createMessage(config.starbucks, "[```" + message.channel.guild.name + "```" + "~>" + "```" + message.channel.name + "```]" + "**" + message.author.username + "**:" + message.content);
+            eris.createMessage(config.starbucks, "[`" + message.channel.guild.name + "`" + "~>" + "`" + message.channel.name + "`]" + "**" + message.author.username + "**:" + message.content);
         } catch (err) {
             eris.createMessage(config.logChannel, `[${message.channel.guild.name}>>${message.channel.name}]${message.author.username}#${message.author.discriminator}: ` + "`loja`" + ` \n\t>> ${err.response}\n\t${err.stack}`);
         }

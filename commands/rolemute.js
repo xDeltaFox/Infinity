@@ -12,7 +12,7 @@ module.exports = {
     isSubcommand: false,
     generator: (message, args) => {
         try {
-            eris.createMessage(config.starbucks, "[```" + message.channel.guild.name + "```" + "~>" + "```" + message.channel.name + "```]" + "**" + message.author.username + "**:" + message.content);
+            eris.createMessage(config.starbucks, "[`" + message.channel.guild.name + "`" + "~>" + "`" + message.channel.name + "`]" + "**" + message.author.username + "**:" + message.content);
             if (message.channel.guild.members.get(message.author.id).permission.has('manageGuild')) {
                 var content = message.content.split(' ');
                 var setData = ref.child('Bot/Servidor/' + message.channel.guild.id + '/');
