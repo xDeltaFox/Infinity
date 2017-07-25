@@ -2,6 +2,7 @@ let eris = require('../lib/client');
 let firebase = require('firebase');
 let fs = require('fs');
 let config = JSON.parse(fs.readFileSync('./config.json', 'utf8'));
+let locale = require('../utils/lang');
 
 var db = firebase.database();
 var ref = db.ref();
@@ -17,22 +18,26 @@ module.exports = {
                 .then(function(snapshot) {
                     var existsData = snapshot.child('Bot/Usuario/' + message.author.id).exists();
                     var userData = snapshot.child('Bot/Usuario/' + message.author.id);
+                    var lang = snapshot.child('Bot/Servidor/' + message.channel.guild.id).child('language');
                     if (existsData) {
                         var content = message.content.split(' ');
                         var a = userData.child('money').val();
                         var one = Math.floor(Math.random() * 10);
                         var two = Math.floor(Math.random() * 10);
                         var three = Math.floor(Math.random() * 10);
+                        var text1 = locale(lang.val(), "betroll.text1").replace("${one}", one).replace("${two}", two).replace("${three}", three).replace("${message.author.mention}", message.author.mention).replace("${content[1]*2}", content[1] * 2);
+                        var text2 = locale(lang.val(), "betroll.text2").replace("${one}", one).replace("${two}", two).replace("${three}", three).replace("${message.author.mention}", message.author.mention).replace("${content[1]}", content[1]);
+                        var text3 = locale(lang.val(), "betroll.text3").replace("${message.author.mention}", message.author.mention);
                         if (userData.child('money').val() > content[1]) {
                             if (one == two || two == three || three == one) {
-                                eris.createMessage(message.channel.id, `**##### Hora de checar! #####**\nSeus numeros foram: ${one} - ${two} - ${three}\n##### Duplos, Parábens! #####\n${message.author.mention}, você ganhou: ${content[1]*2} rows`);
+                                eris.createMessage(message.channel.id, text1);
                                 setUserData.child('money').set(a + content[1] * 2);
                             } else {
-                                eris.createMessage(message.channel.id, `**##### Hora de checar! #####**\nSeus numeros foram: ${one} - ${two} - ${three}\n${message.author.mention}, não foi dessa vez, você perdeu: ${content[1]} rows`);
+                                eris.createMessage(message.channel.id, text2);
                                 setUserData.child('money').set(a - content[1]);
                             }
                         } else {
-                            eris.createMessage(message.channel.id, `${message.author.mention} - Você não tem dinheiro suficiente.`);
+                            eris.createMessage(message.channel.id, text3);
                         }
                     }
                 });
