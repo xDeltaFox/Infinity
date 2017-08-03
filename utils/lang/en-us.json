@@ -7,8 +7,8 @@
     },
     "err": {
         "text1": "Dude, mention somebody.",
-        "text2": "Dude, mention somebody.",
-        "text3": "Dude, mention somebody."
+        "text2": "I'll burn you if you keep doing something you should not. You must have permission `/perm/`",
+        "text3": ":no_entry_sign: Errow, mention somebody, beast."
     },
     "ameaça": ":gun:  |  **Gravity of Crime: (${numero}%)**\n**${message.mentions[0].username}** ${aleatorio[0]}",
     "ameaçatexto": {
@@ -22,13 +22,20 @@
 
     },
     "ban": {
-        "text1": "Bani ${ment[0].username}, and set fire to his messages. :Fire: \nReason: $ {content [2]}",
+        "text1": "Bani ${ment[0].username}, and put fire on messages from this user. :Fire: \nReason: $ {content [2]}",
         "text2": ":No_entry_sign: Errow, mention somebody, beast."
     },
     "betroll": {
-        "text1": "**##### Time to Check! #####** \nYour numbers were: ${one} - ${two} - ${three} \n ##### Double, Parabens! ##### \n $ {message.author.mention}, you earned: ${content[1]*2} Rows",
+        "text1": "**##### Time to Check! #####** \nYour numbers were: ${one} - ${two} - ${three} \n ##### Double, Congratulations! ##### \n $ {message.author.mention}, you earned: ${content[1]*2} Rows",
         "text2": "**##### Time to Check! #####** \nYour numbers were: ${one} - ${two} - ${three} \n ${message.author.mention}, not this time, you lost: ${content[1]} Rows",
         "text3": "${message.author.mention} - You do not have enough money."
     },
-    "kick": "I put ${ment[0].username}, out with my magic boot. :Boot: \nReason: ${content[2]}"
+    "kick": "I put ${ment[0].username}, out with my magic boot. :Boot: \nReason: ${content[2]}",
+    "yt": {
+        "procura": "Searching...",
+        "enviado": "**Sent by: **",
+        "publicado": "**Posted in: **",
+        "descricao": "**Description: **",
+        "voicechannel": ":x: ${message.author.username} - You are not on a voice channel."
+    }
 }

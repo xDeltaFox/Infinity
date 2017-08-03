@@ -24,11 +24,15 @@ module.exports = {
                                 name: 'Miscelânea',
                                 icon_url: eris.user.avatarURL
                             },
-                            description: '**>bot** - Veja informações sobre o bot\n' +
-                                '**>betroll** - rode os numeros e ganhe money\n' +
-                                '**>yt** - faça uma busca por um video no youtube' +
+                            description: '**>bot** - Veja informações sobre o Infinity\n' +
+                                '**>betroll [Aposte]** - Aposte dinheiro e você pode ganhar ou preder.\n' +
+                                '**>yt [Nome do video]** - faça uma busca por um video no youtube\n' +
                                 '**>level** - Veja seu level atual\n' +
-                                '**>money** - Veja o quanto de dinheiro você tem\n'
+                                '**>money** - Veja o quanto de dinheiro você tem\n' +
+                                '**>rank [xp | money](opcional)** - Acesse os ranks disponivés\n' +
+                                '**>discrim [number](opcional)** - Veja discriminadores de usuarios que o bot possa ver\n' +
+                                '**>daily** - Pege sua recompensa de hoje\n' +
+                                '**>profile** - Veja seu perfil\n'
                         }
                     });
                     eris.createMessage(dm.id, {
@@ -38,8 +42,19 @@ module.exports = {
                                 name: 'Usuario',
                                 icon_url: eris.user.avatarURL
                             },
-                            description: '**>usuario** - Veja suas informações\n' +
-                                '**>servidor** - Veja informações sobre o server\n\n'
+                            description: '**>usuario** - Acesse suas informações\n' +
+                                '**>servidor** - Acesse as informações sobre o server\n\n'
+                        }
+                    });
+                    eris.createMessage(dm.id, {
+                        embed: {
+                            color: Math.floor(Math.random() * 16777216),
+                            author: {
+                                name: 'Musica',
+                                icon_url: eris.user.avatarURL
+                            },
+                            description: '**>m tocar [nome da musica]** - Vamos ouvir uma musica?\n' +
+                                '**>m parar** - Remova o bot do canal de voz\n'
                         }
                     });
                     eris.createMessage(dm.id, {
@@ -64,15 +79,15 @@ module.exports = {
                                 icon_url: eris.user.avatarURL
                             },
                             description: '**>uptime** - Mostar o tempo que o bot esta ligado na tomada\n' +
-                                '**>roleadd (role_name)** - Add um cargo ao usuario\n' +
-                                '**>roleremove (role_name)** - remove o cargo de um usuario\n' +
-                                '**>limpar (number)** - Limpe quantas menssagens quiser\n' +
-                                '**>kick (mention) (motivo)** - Kicka um usuario do server(Tem que ter permissão `serverGuild` pra pode usar)\n' +
-                                '**>ban (mention) (motivo)** - bani por 7 dias um usuario do server(Tem que ter permissão `serverGuild` pra pode usar)\n' +
-                                '**>mute (mention) (tempo)** - Mute alguém(Tem que ter permissão `serverGuild` pra pode usar)\n\n' +
-                                '**>rolemute (nome do cargo)** - Sete o cargo de mute no seu server(Tem que ter permissão `serverGuild` pra pode usar)\n\n' +
-                                '**>oninvite** - Ative o sistema anti-convite no server\n' +
-                                '**>onlink** - Ative o sistema anti-link no server\n\n' +
+                                '**>roleadd [role_name]** - Add um cargo ao usuario\n' +
+                                '**>roleremove [role_name]** - remove o cargo de um usuario\n' +
+                                '**>limpar [number]** - Limpe quantas menssagens quiser\n' +
+                                '**>kick [mention] [motivo]** - Kicka um usuario do server(Tem que ter permissão `serverGuild` pra pode usar)\n' +
+                                '**>ban [mention] [motivo]** - bani por 7 dias um usuario do server(Tem que ter permissão `serverGuild` pra pode usar)\n' +
+                                '**>mute [mention] [tempo]** - Mute alguém(Tem que ter permissão `serverGuild` pra pode usar)\n' +
+                                '**>rolemute [nome do cargo]** - Sete o cargo de mute no seu server(Tem que ter permissão `serverGuild` pra pode usar)\n' +
+                                '**>destroy** - Destrua os dados do seu servidor (MAS CUIDADO, USOU JÁ ERA. NÃO TEM VOLTA!)\n\n' +
+                                '**>oninvite** - Ative o sistema anti-convite no server\n\n' +
                                 '**Log de moderação:**\n' +
                                 '**>logmessageupdate** - Log `MessageUpdate`\n' +
                                 '**>logchannelcreate** - Log `channelCreate`\n' +

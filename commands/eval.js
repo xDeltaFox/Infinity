@@ -1,6 +1,7 @@
 let eris = require('../lib/client');
 let fs = require('fs');
 let config = JSON.parse(fs.readFileSync('./config.json', 'utf8'));
+let util = require('util');
 
 module.exports = {
     label: 'execute',
@@ -22,7 +23,8 @@ module.exports = {
                         eris.createMessage(message.channel.id, "Tentando fazer coisa que não deve, bem, você falhou!");
                     } else {
                         try {
-                            eris.createMessage(message.channel.id, ":inbox_tray: Input:\n" + "```js\n" + Comando + "```\n" + ":outbox_tray: Output:\n" + "```\n" + eval(Comando) + "```\n");
+                            let insp = util.inspect(eval(Comando), { depth: 0 });
+                            eris.createMessage(message.channel.id, ":inbox_tray: Input:\n" + "```js\n" + Comando + "```\n" + ":outbox_tray: Output:\n" + "```\n" + eval(Comando) + "```\n" + "Inspect:\n" + "```json\n" + insp.toString() + "```\n");
                         } catch (err) {
                             eris.createMessage(message.channel.id, ":x: " + err.name + ": " + err.message);
                         }

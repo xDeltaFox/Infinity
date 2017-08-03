@@ -32,7 +32,11 @@ module.exports = {
                                     eris.createMessage(message.channel.id, `Porque, você não seta o cargo de mute, antes de mutar alguém. Comando: >rolemute (nome do cargo)`);
                                 }
                             });
+                    } else {
+                        eris.createMessage(message.channel.id, 'Por quanto tempo, quer que eu mute esse individuo?!');
                     }
+                } else {
+                    eris.createMessage(message.channel.id, 'Cadê a menção?');
                 }
             } else {
                 eris.createMessage(message.channel.id, ':fire: Vou te queimar, se continuar fazendo coisa que não deve. tem que ter a permissão `manageGuild`');

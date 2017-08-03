@@ -11,13 +11,15 @@ module.exports = {
     enabled: true,
     handler: (channel) => {
 
-        ref.once("value")
-            .then(function(snapshot) {
-                var log = snapshot.child('Bot/Servidor/' + channel.guild.id + '/log/');
+        if (channel.guild != undefined) {
+            ref.once("value")
+                .then(function(snapshot) {
+                    var log = snapshot.child('Bot/Servidor/' + channel.guild.id + '/log/');
 
-                if (log.child('ChannelCreate').val()) {
-                    eris.createMessage(log.child('logchannelid').val(), `[${moment().tz('America/Sao_Paulo').format('lll')}] :pencil: Log ` + "`ChannelCreate`:" + `\n**#${channel.name}** foi criado`);
-                }
-            });
+                    if (log.child('ChannelCreate').val()) {
+                        eris.createMessage(log.child('logchannelid').val(), `[${moment().tz('America/Sao_Paulo').format('lll')}] :pencil: Log ` + "`ChannelCreate`:" + `\n**#${channel.name}** foi criado`);
+                    }
+                });
+        }
     }
 };

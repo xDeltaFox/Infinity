@@ -7,7 +7,7 @@
     },
     "err": {
         "text1": "Burro, mencione alguém.",
-        "text2": ":fire: Vou te queimar, se continuar fazendo coisa que não deve. tem que ter a permissão `manageGuild`",
+        "text2": ":fire: Vou te queimar, se continuar fazendo coisa que não deve. tem que ter a permissão `/perm/`",
         "text3": ":no_entry_sign: Errow, mencione alguém, besta."
     },
     "ameaça": ":gun:  |  **Gravidade do Crime: (${numero}%)**\n**${message.mentions[0].username}** ${aleatorio[0]}",
@@ -22,7 +22,7 @@
 
     },
     "ban": {
-        "text1": "Bani ${ment[0].username}, e taquei fogo nas mensagens dele. :fire:\nRazão: ${content[2]}",
+        "text1": "Bani ${ment[0].username}, e taquei fogo nas mensagens deste usuário. :fire:\nRazão: ${content[2]}",
         "text2": ":no_entry_sign: Errow, mencione alguém, besta."
     },
     "betroll": {
@@ -30,5 +30,12 @@
         "text2": "**##### Hora de checar! #####**\nSeus numeros foram: ${one} - ${two} - ${three}\n${message.author.mention}, não foi dessa vez, você perdeu: ${content[1]} rows",
         "text3": "${message.author.mention} - Você não tem dinheiro suficiente."
     },
-    "kick": "Botei ${ment[0].username}, pra fora com minha bota magica. :boot:\nRazão: ${content[2]}"
+    "kick": "Botei ${ment[0].username}, pra fora com minha bota magica. :boot:\nRazão: ${content[2]}",
+    "yt": {
+        "procura": "Procurando...",
+        "enviado": "**Enviado por: **",
+        "publicado": "**Publicado em: **",
+        "descricao": "**Descrição: **",
+        "voicechannel": ":x: ${message.author.username} - Você não está em um canal de voz."
+    }
 }

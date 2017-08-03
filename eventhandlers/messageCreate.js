@@ -21,7 +21,6 @@ module.exports = {
                     let inviteRegex = /discord(?:(?:.{0,7})(?:gg|me)(?:\/)(?:\w{5}|\w{7})(?:\s|\n)|\.me(?:\/\w*)|app\.com\/invite)/i;
                     let inviteRegex2 = /(?:discord(?:(?:\.|.?dot.?)(?:me|gg)|app(?:\.|.?dot.?)com\/invite)\/([\w]{10,16}|[abcdefghjkmnpqrstuvwxyzABCDEFGHJKMNPQRSTUVWXYZ23456789]{4,8}))/g;
                     let inviteRegex3 = /(?:^|\s)discord(?:app\.com\/invite|\.gg)\/(?:[0-9a-z\-]+)(?:$|\s)/i;
-                    let urlRegex = /^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/g;
 
                     var userdata = snapshot.child('Bot/Usuario/' + message.author.id + '/');
                     var serverdata = snapshot.child('Bot/Servidor/' + message.channel.guild.id + '/');
@@ -77,15 +76,6 @@ module.exports = {
                             if ((inviteRegex.test(message.content) || inviteRegex2.test(message.content))) {
                                 eris.deleteMessage(message.channel.id, message.id);
                                 eris.createMessage(message.channel.id, `${message.author.mention} parou com esses convites, antes que eu taque fogo em você. :fire:`);
-                            }
-                        }
-                    }
-
-                    if (serverdata.child('link').val()) {
-                        if (message.channel.guild.members.get(eris.user.id).permission.has('manageMessages')) {
-                            if (urlRegex.test(message.content)) {
-                                eris.deleteMessage(message.channel.id, message.id);
-                                eris.createMessage(message.channel.id, `${message.author.mention} vai encher o saco de outro com esses links.`);
                             }
                         }
                     }

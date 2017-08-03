@@ -1,10 +1,13 @@
 let eris = require('../lib/client');
 let firebase = require("firebase");
 let fs = require('fs');
+let arraySort = require('array-sort');
 let Canvas = require('canvas');
 let pixelUtil = require('pixel-util');
 let config = JSON.parse(fs.readFileSync('./config.json', 'utf8'));
+let Utils = require('../utils/Utils');
 
+var utils = new Utils();
 var db = firebase.database();
 var ref = db.ref();
 
@@ -21,79 +24,154 @@ module.exports = {
                 ref.once("value")
                     .then(function(snapshot) {
                         var userdata = snapshot.child('Bot/Usuario/' + message.author.id + '/');
+
+                        msg.edit("Gerando perfil..." + "\n`Pegando informações`").catch()
+                            // Informações
+
+                        // var xp = userdata.child('levels/xp').val();
+                        // for (var i = xp; i > 0; i++) {
+                        //     let curLevel = Math.floor(0.1 * Math.sqrt(xp));
+                        //     if (curLevel > (userdata.child('levels/level').val() ? userdata.child('levels/level').val() : 0)) {
+                        //         return i;
+                        //     }
+                        // }
+                        var rankItem = [];
+                        var ranked = [];
+                        var background;
+                        var level;
+                        var money;
+                        var rank;
+
+                        userdata.child('background').val() ? background = userdata.child('background').val() : background = "https://images.discordapp.net/attachments/309478380787597312/337730109236838401/level_background_for_a_mobile_game__by_bvigec-d5vi8b0.jpg?width=855&height=481";
+                        userdata.child('levels/level').val() ? level = userdata.child('levels/level').val() : level = 0;
+                        userdata.child('levels/money').val() ? money = userdata.child('levels/money').val() : money = 0;
+
+                        eris.users.forEach(e => {
+                            var xp = snapshot.child('Bot/Usuario/' + e.id).child('levels/xp');
+                            var money = snapshot.child('Bot/Usuario/' + e.id).child('levels/money');
+                            rankItem.exp = xp.val();
+                            rankItem.money = money.val();
+                            rankItem.name = e.username;
+                            rankItem.id = e.id;
+
+                            ranked.push(rankItem);
+                            rankItem = [];
+                        });
+
+                        arraySort(ranked, 'exp', {
+                            reverse: true
+                        });
+
+                        for (var i = 0; i < ranked.length; i++) {
+                            if (ranked[i].id == message.author.id) {
+                                rank = i + 1;
+                            }
+                        }
+
+                        // Progress Bar
+
+                        var largura = 0;
+                        var autura = 7;
+
+                        var exp = userdata.child('levels/xp').val();
+                        var exptoNex = Math.pow(Number(Math.floor(0.1 * Math.sqrt(exp)) + "0") + 10, 2).toString();
+                        var exptoThis = Math.pow(Number(Math.floor(0.1 * Math.sqrt(exp)) + "0"), 2).toString();
+                        var frameofact = Math.pow(Number(Math.floor(0.1 * Math.sqrt(exp)) + "0") + 10, 2) - Math.pow(Number(Math.floor(0.1 * Math.sqrt(exp)) + "0"), 2);
+                        var percent = (((Number(exp) - Number(exptoThis)) / frameofact) * 100).toFixed(0);
+
+                        try {
+                            largura = (316 / 100) * percent;
+                        } catch (e) {
+                            largura = 316;
+                        }
+
+                        // Perfil
+
                         msg.edit("Gerando perfil..." + "\n`Criando perfil`").catch()
-                        if (message.member.permission.has('embedLinks')) {
-                            var Font = Canvas.Font;
+                        if (message.channel.guild.channels.get(message.channel.id).permissionsOf(eris.user.id).has('attachFiles')) {
                             var image = new Canvas.Image;
-                            var image2 = new Canvas.Image;
-                            var canvas;
+                            var backgroundImage = new Canvas.Image;
+                            var canvas = new Canvas(321, 241);
+                            var ctx = canvas.getContext('2d');
 
-                            msg.edit("Gerando perfil..." + "\n`Pegando background`").catch()
-
-                            pixelUtil.createBuffer("https://images.discordapp.net/attachments/309478380787597312/337730109236838401/level_background_for_a_mobile_game__by_bvigec-d5vi8b0.jpg?width=855&height=481").then(buffer => {
+                            msg.edit("Gerando perfil..." + "\n`Adicionando avatar`").catch()
+                            pixelUtil.createBuffer(message.author.avatarURL).then(buffer => {
                                 image.src = buffer;
 
-                                canvas = new Canvas(321, 241);
-                                var ctx = canvas.getContext('2d');
+                                ctx.drawImage(image, 114, 18, 83, 83);
 
-                                ctx.drawImage(image, 0, 0, 321, 241);
+                                ctx.save();
 
-                                msg.edit("Gerando perfil..." + "\n`Montando perfil`").catch()
+                                ctx.globalCompositeOperation = "destination-atop";
 
-                                pixelUtil.createBuffer("https://images.discordapp.net/attachments/309478380787597312/337728114106957824/Tampletes-profile2.png?width=241&height=181").then(buffer => {
-                                    image2.src = buffer;
+                                ctx.beginPath();
+                                ctx.arc(155.5, 59.5, 43, 0, Math.PI * 2, true);
+                                ctx.fillStyle = '#ffffff';
+                                ctx.fill();
+                                ctx.closePath();
 
-                                    ctx.drawImage(image2, 0, 0, 321, 241);
+                                ctx.restore();
 
-                                    msg.edit("Gerando perfil..." + "\n`Adicionando avatar`").catch()
+                                msg.edit("Gerando perfil..." + "\n`Criando a barra de experiencia`").catch()
+                                pixelUtil.createBuffer("https://cdn.discordapp.com/attachments/309478380787597312/340928426301063178/Progress_bar.png").then(buffer => {
+                                    image.src = buffer;
 
-                                    pixelUtil.createBuffer(message.author.avatarURL).then(buffer => {
-                                        image2.src = buffer;
+                                    ctx.drawImage(image, 2, 231, largura, autura);
 
-                                        ctx.save();
+                                    msg.edit("Gerando perfil..." + "\n`Adicionando informações`").catch()
+                                    pixelUtil.createBuffer("https://cdn.discordapp.com/attachments/309478380787597312/341021090497429504/Tampletes-profile.png").then(buffer => {
+                                        image.src = buffer;
 
-                                        ctx.drawImage(image2, 114, 18, 83, 83);
+                                        ctx.drawImage(image, 0, 0, 321, 241);
 
-                                        ctx.globalCompositeOperation = "destination-in";
+                                        // Username
+                                        ctx.font = '14px Arial';
+                                        ctx.fillStyle = '#000000';
+                                        ctx.fillText(`${message.author.username}`, 113, 143);
 
-                                        ctx.beginPath();
-                                        ctx.arc(155.5, 59.5, 43, 0, Math.PI * 2, true);
-                                        ctx.fill();
-                                        ctx.closePath();
+                                        // Level
+                                        ctx.font = '14px Arial';
+                                        ctx.fillStyle = '#000000';
+                                        ctx.fillText(`${level}`, 43, 38);
 
-                                        ctx.restore();
+                                        // Money
+                                        ctx.font = '14px Arial';
+                                        ctx.fillStyle = '#000000';
+                                        ctx.fillText(`₹${money}`, 244, 38);
 
-                                        msg.edit("Gerando perfil..." + "\n`Pegando informações`").catch()
+                                        // Rank
+                                        ctx.font = '14px Arial';
+                                        ctx.fillStyle = '#000000';
+                                        ctx.fillText(`#${rank}`, 38, 78);
 
-                                        pixelUtil.createBuffer("https://images.discordapp.net/attachments/309478380787597312/338085539167207425/Tampletes-profile.png?width=241&height=181").then(buffer => {
-                                            image2.src = buffer;
+                                        // Exp
+                                        ctx.font = '14px Arial';
+                                        ctx.fillStyle = '#000000';
+                                        ctx.fillText(`${percent}% [${exp}/${exptoNex}]`, 35, 230);
 
-                                            ctx.drawImage(image2, 0, 0, 321, 241);
+                                        msg.edit("Gerando perfil..." + "\n`Pegando background`").catch()
+                                        pixelUtil.createBuffer(background).then(buffer => {
+                                            backgroundImage.src = buffer;
+
+                                            ctx.globalCompositeOperation = "destination-over";
+
+                                            ctx.drawImage(backgroundImage, 0, 0, 321, 241);
 
                                             msg.edit("Gerando perfil..." + "\n`Enviando buffer`").catch()
-
-                                            // Username
-                                            ctx.font = '14px Arial';
-                                            ctx.fillStyle = '#000000';
-                                            ctx.fillText(`${message.author.username}`, 23, 150);
-
-                                            // Level
-                                            ctx.font = '14px Arial';
-                                            ctx.fillStyle = '#000000';
-                                            ctx.fillText(`Level: ${userdata.child('levels/level').val()}`, 23, 175);
-
                                             message.channel.createMessage(`${message.author.mention} - Perfil`, {
                                                 file: canvas.toBuffer(),
                                                 name: 'canvas.png'
                                             }).then(picsent => {
                                                 var stop = Date.now();
                                                 var diff = (stop - start);
-                                                msg.edit("ACABEI! \n Perfil gerado em `" + diff / 1000 + "s`").catch()
+                                                msg.edit("ACABEI!\nPerfil gerado em `" + diff / 1000 + "s`").catch()
                                             })
                                         });
                                     });
                                 });
                             });
+                        } else {
+                            msg.edit("AI! isso machuca, não ter permissão. Pq faz isso comigo? Me dá permissão de `attachFiles`");
                         }
                     });
             });
@@ -105,6 +183,6 @@ module.exports = {
         description: 'Descrição',
         deleteCommand: false,
         caseInsensitive: true,
-        alias: ['ts']
+        alias: ['pf']
     }
 };

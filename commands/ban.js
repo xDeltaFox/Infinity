@@ -17,12 +17,12 @@ module.exports = {
             ref.once("value")
                 .then(function(snapshot) {
                     var lang = snapshot.child('Bot/Servidor/' + message.channel.guild.id).child('language');
-                    var errtext = locale(lang.val(), "err.text2")
-                    var bantext = locale(lang.val(), "err.text2").replace("${ment[0].username}", ment[0].username).replace("${content[2]}", content[2]);
+                    var ment = message.mentions;
+                    var content = message.content.split(' ');
+                    var errtext = locale(lang.val(), "err.text2").replace("/perm/", "banMember");
                     if (message.channel.guild.members.get(message.author.id).permission.has('manageGuild')) {
-                        var ment = message.mentions;
-                        var content = message.content.split(' ');
-                        if (message.mentions[0] != undefined || content[2] != undefined) {
+                        if (ment[0] != undefined && content[2] != undefined) {
+                            var bantext = locale(lang.val(), "ban.text1").replace("${ment[0].username}", ment[0].username).replace("${content[2]}", content[2]);
                             message.channel.guild.banMember(ment[0].id, 7, content[2]);
                             eris.createMessage(message.channel.id, bantext);
                         } else {

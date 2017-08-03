@@ -14,8 +14,7 @@ module.exports = {
                 var ment = eris.guilds.get(message.channel.guild.id).roles.find(name => name.name.toLowerCase() == cargao[1].toLowerCase());
                 if (ment != undefined) {
                     message.channel.guild.removeMemberRole(message.author.id, ment.id);
-                    eris.createMessage(message.channel.id, `${ment.name} adicionado!`).then(message => setTimeout(function() { message.delete(); }, 5000));
-                    message.delete();
+                    eris.createMessage(message.channel.id, `${ment.name} removido!`).then(message => setTimeout(function() { message.delete(); }, 5000));
                 }
             } else {
                 eris.createMessage(message.channel.id, `Preciso da permissão "manageRoles"`).then(message => setTimeout(function() { message.delete(); }, 5000));

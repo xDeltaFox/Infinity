@@ -3,12 +3,13 @@ let path = require('path');
 
 let eris = require('./lib/client');
 
-fs.readdir('./commands', (err, files)=> {
+fs.readdir('./commands', (err, files) => {
     if (err) {
-        console.log('Commands could not be loaded.', {attach: err});
+        console.log('Commands could not be loaded.', { attach: err });
         process.exit(1);
     } else {
-        files.forEach((file)=> {
+        var count = 0;
+        files.forEach((file) => {
             try {
                 let c = require('./commands/' + file);
                 if (c.enabled && !c.isSubcommand) {
@@ -17,28 +18,30 @@ fs.readdir('./commands', (err, files)=> {
 
                     function registerSubcommands(cmd, parent) {
                         cmd.subcommands = cmd.subcommands || [];
-                        cmd.subcommands.forEach((subcmd)=> {
+                        cmd.subcommands.forEach((subcmd) => {
                             if (subcmd.enabled) {
                                 let c = parent.registerSubcommand(subcmd.label, subcmd.generator, subcmd.options);
                                 registerSubcommands(subcmd, c);
+                                count++;
                             }
                         });
                     }
                 }
             } catch (e) {
-                console.log('Error while loading command ' + file, {attach: e})
+                console.log('Error while loading command ' + file, { attach: e })
             }
         });
         eris.connect();
+        eris.countCommands = count;
     }
 });
 
-fs.readdir('./eventhandlers', (err, files)=> {
+fs.readdir('./eventhandlers', (err, files) => {
     if (err) {
-        console.log('Eventhandlers could not be loaded.', {attach: err});
+        console.log('Eventhandlers could not be loaded.', { attach: err });
         process.exit(1);
     } else {
-        files.forEach((file)=> {
+        files.forEach((file) => {
             try {
                 let f = require('./eventhandlers/' + file);
                 if (f.enabled) {
@@ -46,7 +49,7 @@ fs.readdir('./eventhandlers', (err, files)=> {
                     console.log('Loaded handler for ' + f.event);
                 }
             } catch (e) {
-                console.log('Error while loading eventhandler ' + file, {attach: e})
+                console.log('Error while loading eventhandler ' + file, { attach: e })
             }
         });
     }

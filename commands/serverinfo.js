@@ -169,7 +169,7 @@ module.exports = {
                             inline: false
                         }],
                         footer: {
-                            text: moment().format("LL") + " at " + moment().tz(timezone).format("LLLL"),
+                            text: `ID: ${message.author.id} || ${moment().tz(timezone).format("LLLL")}`,
                             icon_url: message.author.avatarURL
                         }
 
