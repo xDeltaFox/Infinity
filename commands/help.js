@@ -88,6 +88,7 @@ module.exports = {
                                 '**>rolemute [nome do cargo]** - Sete o cargo de mute no seu server(Tem que ter permissão `serverGuild` pra pode usar)\n' +
                                 '**>destroy** - Destrua os dados do seu servidor (MAS CUIDADO, USOU JÁ ERA. NÃO TEM VOLTA!)\n\n' +
                                 '**>oninvite** - Ative o sistema anti-convite no server\n\n' +
+                                '**>lang [en || pt]** - Que lingua quer que eu fale?\n\n' +
                                 '**Log de moderação:**\n' +
                                 '**>logmessageupdate** - Log `MessageUpdate`\n' +
                                 '**>logchannelcreate** - Log `channelCreate`\n' +
