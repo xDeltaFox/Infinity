@@ -17,7 +17,7 @@
         "bindings": "^1.2.1",
         "bluebird": "^3.5.0",
         "bufferutil": "^3.0.1",
-        "canvas-prebuilt": "^1.6.5-prerelease.1",
+        "canvas": "^1.6.5",
         "chance": "^1.0.4",
         "cheerio": "^1.0.0-rc.1",
         "colors": "^1.1.2",
