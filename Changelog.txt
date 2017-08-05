@@ -1,8 +1,13 @@
 # Changelog
-Todos as altera��es do Infinity v�o est� nesse arquivo.
+Todos as alteracoes do Infinity vao esta nesse arquivo.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [2.0.3] - 31-07-2017
 ### Adicionado
+- >m tocar [nome da musica] - Vamos ouvir uma musica?
+- >m parar - Remova o bot do canal de voz
+- >discrim [number](opcional) - Veja discriminadores de usuarios que o bot possa ver
+- >daily - Pege sua recompensa de hoje
+- >ajuda - Foi atualizado
