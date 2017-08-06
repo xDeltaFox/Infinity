@@ -4,6 +4,10 @@ Todos as alteracoes do Infinity vao esta nesse arquivo.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [2.0.4] - 06-08-2017
+### Alterado
+- Todo sistema de musica foi rescrito, agora está mais completo, com Playlist e pular
+
 ## [2.0.3] - 31-07-2017
 ### Adicionado
 - >m tocar [nome da musica] - Vamos ouvir uma musica?
@@ -11,3 +15,5 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - >discrim [number](opcional) - Veja discriminadores de usuarios que o bot possa ver
 - >daily - Pege sua recompensa de hoje
 - >ajuda - Foi atualizado
+
+## Qual quer das outras alteracoes antes da versao [2.0.3] ficou perdida no tempo.

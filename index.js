@@ -8,7 +8,6 @@ fs.readdir('./commands', (err, files) => {
         console.log('Commands could not be loaded.', { attach: err });
         process.exit(1);
     } else {
-        var count = 0;
         files.forEach((file) => {
             try {
                 let c = require('./commands/' + file);
@@ -22,7 +21,6 @@ fs.readdir('./commands', (err, files) => {
                             if (subcmd.enabled) {
                                 let c = parent.registerSubcommand(subcmd.label, subcmd.generator, subcmd.options);
                                 registerSubcommands(subcmd, c);
-                                count++;
                             }
                         });
                     }
@@ -32,7 +30,6 @@ fs.readdir('./commands', (err, files) => {
             }
         });
         eris.connect();
-        eris.countCommands = count;
     }
 });
 

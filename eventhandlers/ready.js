@@ -1,4 +1,5 @@
 let eris = require('../lib/client');
+let request = require('request');
 
 module.exports = {
     event: 'ready',

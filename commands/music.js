@@ -4,8 +4,10 @@ let config = JSON.parse(fs.readFileSync('./config.json', 'utf8'));
 let locale = require('../utils/lang');
 let firebase = require("firebase");
 let YouTube = require('youtube-node');
-var ytdl = require('ytdl-core');
+let ytdl = require('ytdl-core');
 let moment = require('moment');
+let manager = require('../music/music/manager.js');
+let utils = require('../music/utils/utils.js');
 
 let youTube = new YouTube();
 var db = firebase.database();
@@ -38,6 +40,8 @@ module.exports = {
                     var publicado = locale(lang.val(), "yt.publicado");
                     var descricao = locale(lang.val(), "yt.descricao");
                     var voicechannel = locale(lang.val(), "yt.voicechannel").replace("${message.author.username}", message.author.username);
+
+                    let channel = message.guild.channels.find(ch => ch.bitrate && ch.voiceMembers.map(m => m.user).includes(message.author));
 
                     if (!musica.child('tocando').val()) {
                         setmusica.child('tocando').set(false);
@@ -99,95 +103,45 @@ module.exports = {
                                                             var index = 0;
                                                             (parseInt(responses[0].content) - 1) ? (index = parseInt(responses[0].content) - 1) : index = 0;
 
-                                                            // O usuario está no canal de voz?
-                                                            if (!message.member.voiceState.channelID) {
-                                                                eris.createMessage(message.channel.id, voicechannel);
-                                                                return;
-                                                            }
+                                                            var video = items[index];
+                                                            var link = links[index];
 
-                                                            // O bot vai entrar no canal de voz
-                                                            eris.joinVoiceChannel(message.member.voiceState.channelID).catch((err) => {
-                                                                eris.createMessage(message.channel.id, "Error joining voice channel: " + err.message); // OPS! Algo nos inpede de entrar o canal de voz.
-                                                                console.log(err); // Log do erro
-                                                            }).then((connection) => {
-
-                                                                var video = items[index];
-                                                                var link = links[index];
-
-                                                                play(link, connection);
-                                                                setmusica.child('tocando').set(true);
-                                                                setmusica.child('np').set(playle[index]);
-
-                                                                //Update Playlist
-                                                                playlist.forEach(function(childSnapshot) {
-                                                                    var childData = childSnapshot.val();
-                                                                    listsave += childData;
-                                                                });
-                                                                console.log(listsave);
-                                                                listsave += playle[index];
-                                                                setplaylist.set([listsave]);
-
-                                                                // Despachando a mensagem...
-                                                                msg.edit(`Tocando **${playle[index]}**`);
-                                                                // eris.createMessage(message.channel.id, {
-                                                                //     embed: {
-                                                                //         color: Math.floor(Math.random() * 16777216),
-                                                                //         title: video.snippet.title,
-                                                                //         description: link,
-                                                                //         thumbnail: {
-                                                                //             url: video.snippet.thumbnails.high.url,
-                                                                //             proxy_url: video.snippet.thumbnails.high.url
-                                                                //         },
-                                                                //         fields: [{
-                                                                //             name: enviado,
-                                                                //             value: video.snippet.channelTitle,
-                                                                //             inline: true
-                                                                //         }, {
-                                                                //             name: publicado,
-                                                                //             value: moment(video.snippet.publishedAt).format('LLLL'),
-                                                                //             inline: true
-                                                                //         }, {
-                                                                //             name: descricao,
-                                                                //             value: video.snippet.description,
-                                                                //             inline: true
-                                                                //         }],
-                                                                //         footer: {
-                                                                //             text: 'por ' + message.author.username + "#" + message.author.discriminator,
-                                                                //             icon_url: message.author.avatarURL
-                                                                //         }
-                                                                //     }
-                                                                // });
-                                                                connection.once("end", () => {
-                                                                    msg.edit(`Abacou de tocar **${playle[index]}** - <@${responses[0].author.id}>`);
-                                                                    if (playlist.exists()) {
-                                                                        playlist.forEach(function(childSnapshot) {
-                                                                            var childData = childSnapshot.val();
-                                                                            listsave += childData;
+                                                            if (channel) {
+                                                                let json = channel.permissionsOf(eris.user.id).json;
+                                                                if (json.voiceConnect && json.voiceSpeak && json.voiceUseVAD) {
+                                                                    let url = link;
+                                                                    // if (url.includes('&')) {
+                                                                    //     url = 'https://www.youtube.com/watch?v=' + utils.getURLParams(url).v;
+                                                                    // }
+                                                                    try {
+                                                                        ytdl.getInfo(url, (err, info) => {
+                                                                            if (!err) {
+                                                                                manager.get(channel.guild.id).queue({
+                                                                                    url: url,
+                                                                                    channel: channel.id,
+                                                                                    textChannel: message.channel.id,
+                                                                                    info: info,
+                                                                                    requestedBy: message.author.id
+                                                                                });
+                                                                                msg.delete();
+                                                                            } else {
+                                                                                msg.edit('URL incorreto!');
+                                                                            }
                                                                         });
-                                                                        console.log(listsave);
-                                                                        listsave.shift();
-                                                                        play(listsave[0], connection);
-                                                                        setplaylist.set([listsave]);
-                                                                    } else {
-                                                                        setplaylist.remove();
-                                                                        eris.leaveVoiceChannel(connection.id);
-                                                                        setmusica.child('tocando').set(false);
-                                                                        setmusica.child('np').set("nada");
+                                                                    } catch (err) {
+                                                                        msg.edit('URL incorreto ou faltando!');
                                                                     }
-                                                                });
-                                                            });
+                                                                } else {
+                                                                    msg.edit("Eu não tenho permissões para se juntar a esse canal!");
+                                                                }
+                                                            } else {
+                                                                msg.edit(`${message.author.mention} - você não está em um canal de voz.`);
+                                                            }
                                                         }
                                                     } catch (e) {
                                                         message.channel.createMessage("Me chama, e fica inativo me deixando no vacuo, muito obrigrado por nada." + message.author.mention + `\n\n${e}`);
                                                     }
                                                 } else {
-                                                    playlist.forEach(function(childSnapshot) {
-                                                        var childData = childSnapshot.val();
-                                                        listsave += childData;
-                                                    });
-                                                    console.log(listsave);
-                                                    listsave += playle[index];
-                                                    setplaylist.set([listsave]);
                                                     eris.createMessage(message.channel.id, `Adicionei a plylist: **${playle[index]}**`);
                                                 }
                                             });
@@ -199,51 +153,55 @@ module.exports = {
                             });
                             break;
                         case 'pause':
-
+                            manager.get(message.guild.id).pause();
+                            eris.createMessage(message.channel.id, `Pausei ${manager.get(message.guild.id).getSong()}`);
+                            break;
+                        case 'resume':
+                            manager.get(message.guild.id).resume();
+                            eris.createMessage(message.channel.id, `Retomando ${manager.get(message.guild.id).getSong()}`);
                             break;
                         case 'pular':
-
+                            if (channel) {
+                                manager.get(message.guild.id).skip();
+                            } else {
+                                message.channel.createMessage('Deve estar em um canal para pular músicas!');
+                            }
                             break;
                         case 'tocando':
-                            eris.createMessage(message.channel.id, `Estou tocando ${musica.child('np').val()}`);
+                            if (manager.get(message.guild.id).getSong) {
+                                eris.createMessage(message.channel.id, `Estou tocando ${manager.get(message.guild.id).getSong.info.title}`);
+                            } else {
+                                eris.createMessage(message.channel.id, `Não estou tocando nada.`);
+                            }
                             break;
                         case 'playlist':
-                            ref.once("value")
-                                .then(function(snapshot) {
-                                    var playlist = snapshot.child('Bot/Servidor/' + message.channel.guild.id + '/musica/playlist/');
-                                    var lista = "";
-                                    var count = 0;
-                                    playlist.forEach(function(childSnapshot) {
-                                        count++;
-                                    });
-                                    playlist.forEach(function(childSnapshot) {
-                                        var key = childSnapshot.key;
-                                        var childData = childSnapshot.val();
-
-                                        if (key == 0) lista += (Number(key) + 1) + ": :arrow_forward:  Musica atual: **" + childData + "**\n";
-                                        else lista += (Number(key) + 1) + ": :small_orange_diamond: `" + childData + "`\n";
-                                        if (key == 9) lista += "*E outras " + (count - 9) + " musicas*..."
-                                        if (key > 9) return true;
-                                    });
-                                    eris.createMessage(message.channel.id, lista);
-                                });
+                            let queue = manager.get(message.channel.guild.id).getQueue();
+                            let embed = { title: 'Current Playlist:', type: 'rich', fields: [] };
+                            var lista = "**Playlist**: \n";
+                            var count = 0;
+                            if (manager.get(message.guild.id).getSong) {
+                                lista += (count + 1) + ": :arrow_forward:  Musica atual: **" + manager.get(message.guild.id).getSong.info.title + "**\n";
+                                count++;
+                            }
+                            queue.forEach(v => {
+                                if (count == 0) lista += (count + 1) + ": :arrow_forward:  Proxima musica: **" + v.info.title + "**\n";
+                                else lista += (count + 1) + ": :small_orange_diamond: `" + v.info.title + "`\n";
+                                if (count == 9) lista += "*E outras musicas*...";
+                                if (count > 9) return true;
+                                count++;
+                            });
+                            if (lista == "**Playlist**: \n") {
+                                lista += "A playlist está vazia";
+                            }
+                            eris.createMessage(message.channel.id, lista).catch(console.error);
                             break;
                         case 'parar':
-                            // O usuario está no canal de voz?
-                            if (!message.member.voiceState.channelID) {
-                                eris.createMessage(message.channel.id, voicechannel);
-                                return;
+                            if (channel) {
+                                eris.leaveVoiceChannel(channel.id);
+                                manager.get(message.channel.guild.id).destroyNow();
+                            } else {
+                                message.channel.createMessage(`${message.author.mention} - você não está em um canal de voz.`);
                             }
-
-                            eris.joinVoiceChannel(message.member.voiceState.channelID).catch((err) => {
-                                eris.createMessage(message.channel.id, "Error joining voice channel: " + err.message); // OPS! Algo nos inpede de entrar o canal de voz.
-                                console.log(err); // Log do erro
-                            }).then((connection) => {
-                                eris.leaveVoiceChannel(connection.id);
-                                setmusica.child('tocando').set(false);
-                                setmusica.child('np').set("nada");
-                                setplaylist.remove();
-                            });
                             break;
                         default:
                             eris.createMessage(message.channel.id, `Não sei o que você ue dizer com isso, acho que sou burro demais pra entender.`);
@@ -251,13 +209,6 @@ module.exports = {
                     }
                 });
             // }
-
-            function play(musica, connection) {
-                // Iniciando stream...
-                let stream = ytdl(musica, { filter: 'audioonly' });
-                // Tocando a musica...
-                const dispatcher = connection.play(stream);
-            }
         } catch (err) {
             eris.createMessage(config.logChannel, `[${message.channel.guild.name}>>${message.channel.name}]${message.author.username}#${message.author.discriminator}:${this.label}\n\t>> ${err.response}\n\t${err.stack}`);
         }
