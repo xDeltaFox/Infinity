@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Alterado
 - Tradução para inglês está em 40%
 
+### Adicionado
+- Autorole Exemplo: >autorole [nome do cargo] OBS: o mesmo comando ativa e desativa o autorole.
+
 ## [2.0.4] - 06-08-2017
 ### Alterado
 - Todo sistema de musica foi rescrito, agora está mais completo, com Playlist e pular
