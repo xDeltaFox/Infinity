@@ -31,11 +31,59 @@
         "text3": "${message.author.mention} - You do not have enough money."
     },
     "kick": "I put ${ment[0].username}, out with my magic boot. :Boot: \nReason: ${content[2]}",
+    "level": "Your level is ${userdata.child('levels/level').val() ? userdata.child('levels/level').val() : 0} with ${userdata.child('levels/xp').val() ? userdata.child('levels/xp').val() : 0} of xp in total.",
+    "mate": {
+        "txt1": "${message.author.username} killed ${message.mentions[0].username}",
+        "txt2": "${message.author.username} failed to kill ${message.mentions[0].username}",
+        "consequencia1": "**${name}** was arrested for murder",
+        "consequencia2": "**${name}** was arrested for attempted murder",
+        "consequencia3": "**${name}** escaped from local authorities"
+    },
+    "money": {
+        "add": "Add #500 Rows to Your Wallet - ${message.author.mention}",
+        "has": "You have ${userdata.child('levels/money').val()} of row."
+    },
+    "mute": {
+        "text1": "${message.mentions[0].mention} Your punishment is over, you're free.",
+        "text2": "I've muted, ${message.mentions[0].username} from here to ${content[2]} minute(s) are back fucking again.",
+        "text3": "Because, you do not arrow the post of mute, before you mutate someone. Command:> rolemute (job title)",
+        "err": {
+            "err1": "For how long, do you want me to mutate this guy?!",
+            "err2": "Where is the mention?",
+            "err3": ":fire: I'll burn you if you keep doing something you should not. You must have permission `manageGuild`"
+        }
+    },
+    "log": {
+        "channelCreate": {
+            "ativado": "ChannelCreate logging system has been enabled on the server: ",
+            "desativado": "ChannelCreate logging system has been disabled on the server: "
+        },
+        "channelDelete": {
+            "ativado": "ChannelDelete logging system has been enabled on the server: ",
+            "desativado": "ChannelDelete logging system has been disabled on the server: "
+        },
+        "guildBanAdd": {
+            "ativado": "GuildBanAdd logging system has been activated on the server: ",
+            "desativado": "GuildBanAdd logging system has been disabled on the server: "
+        },
+        "guildBanRemove": {
+            "ativado": "GuildBanRemove logging system has been activated on the server: ",
+            "desativado": "GuildBanRemove logging system has been disabled on the server: "
+        },
+        "err": {
+            "text": "I can not show the log in the main chat of the server."
+        }
+    },
     "yt": {
         "procura": "Searching...",
         "enviado": "**Sent by: **",
         "publicado": "**Posted in: **",
         "descricao": "**Description: **",
-        "voicechannel": ":x: ${message.author.username} - You are not on a voice channel."
+        "voicechannel": ":x: ${message.author.username} - You are not on a voice channel.",
+        "err": {
+            "bad1": "URL incorreto!",
+            "bad2": "URL incorreto ou faltando!",
+            "bad3": "Eu não tenho permissões para se juntar a esse canal!"
+        }
     }
 }

@@ -81,6 +81,7 @@ module.exports = {
                             description: '**>uptime** - Mostar o tempo que o bot esta ligado na tomada\n' +
                                 '**>roleadd [role_name]** - Add um cargo ao usuario\n' +
                                 '**>roleremove [role_name]** - remove o cargo de um usuario\n' +
+                                '**>autorole [role_name]** - Defina um auto-role\n' +
                                 '**>limpar [number]** - Limpe quantas menssagens quiser\n' +
                                 '**>kick [mention] [motivo]** - Kicka um usuario do server(Tem que ter permissão `serverGuild` pra pode usar)\n' +
                                 '**>ban [mention] [motivo]** - bani por 7 dias um usuario do server(Tem que ter permissão `serverGuild` pra pode usar)\n' +

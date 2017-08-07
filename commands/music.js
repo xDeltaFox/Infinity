@@ -125,24 +125,22 @@ module.exports = {
                                                                                 });
                                                                                 msg.delete();
                                                                             } else {
-                                                                                msg.edit('URL incorreto!');
+                                                                                msg.edit(locale(lang.val(), "yt.err.bad1"));
                                                                             }
                                                                         });
                                                                     } catch (err) {
-                                                                        msg.edit('URL incorreto ou faltando!');
+                                                                        msg.edit(locale(lang.val(), "yt.err.bad2"));
                                                                     }
                                                                 } else {
-                                                                    msg.edit("Eu não tenho permissões para se juntar a esse canal!");
+                                                                    msg.edit(locale(lang.val(), "yt.err.bad3"));
                                                                 }
                                                             } else {
-                                                                msg.edit(`${message.author.mention} - você não está em um canal de voz.`);
+                                                                msg.edit(voicechannel);
                                                             }
                                                         }
                                                     } catch (e) {
-                                                        message.channel.createMessage("Me chama, e fica inativo me deixando no vacuo, muito obrigrado por nada." + message.author.mention + `\n\n${e}`);
+                                                        message.channel.createMessage(locale(lang.val(), "err.text4") + message.author.mention + `\n\n${e}`);
                                                     }
-                                                } else {
-                                                    eris.createMessage(message.channel.id, `Adicionei a plylist: **${playle[index]}**`);
                                                 }
                                             });
                                         }

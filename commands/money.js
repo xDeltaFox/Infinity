@@ -17,12 +17,13 @@ module.exports = {
             ref.once("value")
                 .then(function(snapshot) {
                     var userdata = snapshot.child('Bot/Usuario/' + message.author.id + '/');
+                    var lang = snapshot.child('Bot/Servidor/' + message.channel.guild.id).child('language');
 
                     if (userdata.child('levels/money').val() == undefined) {
                         setuserdata.child('levels/money').set(500);
-                        eris.createMessage(message.channel.id, `Add #500 Rows a sua carteira - ${message.author.mention}`);
+                        eris.createMessage(message.channel.id, locale(lang.val(), "money.add").replace("${message.author.mention}", message.author.mention));
                     } else {
-                        eris.createMessage(message.channel.id, "Você tem " + userdata.child('levels/money').val() + " de row. ");
+                        eris.createMessage(message.channel.id, locale(lang.val(), "money.has").replace("${userdata.child('levels/money').val()}", userdata.child('levels/money').val()));
                     }
 
                 });

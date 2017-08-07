@@ -2,6 +2,7 @@ let eris = require('../lib/client');
 let firebase = require("firebase");
 let fs = require('fs');
 let config = JSON.parse(fs.readFileSync('./config.json', 'utf8'));
+let locale = require('../utils/lang');
 
 var db = firebase.database();
 var ref = db.ref();
@@ -18,16 +19,17 @@ module.exports = {
             ref.once("value")
                 .then(function(snapshot) {
                     var log = snapshot.child('Bot/Servidor/' + message.channel.guild.id + '/log/');
+                    var lang = snapshot.child('Bot/Servidor/' + message.channel.guild.id).child('language');
                     if (log.child('logchannelid').val() != message.channel.guild.defaultChannel.id) {
                         if (log.child('GuildBanRemove').val()) {
                             setlinkData.child('GuildBanRemove').set(false);
-                            eris.createMessage(message.channel.id, "Sistema de logs guildBanRemove foi desativado no server: " + message.channel.guild.name);
+                            eris.createMessage(message.channel.id, locale(lang.val(), "log.guildBanRemove.desativado") + message.channel.guild.name);
                         } else {
                             setlinkData.child('GuildBanRemove').set(true);
-                            eris.createMessage(message.channel.id, "Sistema de logs guildBanRemove foi ativado no server: " + message.channel.guild.name);
+                            eris.createMessage(message.channel.id, locale(lang.val(), "log.guildBanRemove.ativado") + message.channel.guild.name);
                         }
                     } else {
-                        eris.createMessage(message.channel.id, "Não posso mostra o log no chat principal do servidor.");
+                        eris.createMessage(message.channel.id, locale(lang.val(), "log.err.text"));
                     }
                 });
         } catch (err) {
