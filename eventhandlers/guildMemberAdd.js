@@ -31,6 +31,10 @@ module.exports = {
                     var msgwelcome = reWelcome(server.child('msgwelcome').val());
                     eris.createMessage(server.child('welcomechannelid').val(), msgwelcome);
                 }
+
+                if (server.child('ativarautorole').val()) {
+                    guild.addMemberRole(member.id, server.child('autorole').val());
+                }
             });
     }
 };
