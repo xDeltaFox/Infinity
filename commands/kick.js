@@ -21,9 +21,14 @@ module.exports = {
                     if (message.channel.guild.members.get(message.author.id).permission.has('manageGuild')) {
                         var ment = message.mentions;
                         var content = message.content.split(' ');
-                        var txt = locale(lang.val(), "kick").replace("${ment[0].username}", ment[0].username).replace("${content[2]}", content[2]);
                         if (message.mentions[0] != undefined || content[2] != undefined) {
-                            message.channel.guild.kickMember(ment[0].id, content[2]);
+                            var txt = locale(lang.val(), "kick").replace("${ment[0].username}", ment[0].username).replace("${content[2]}", content[2]);
+                            message.channel.guild.kickMember(ment[0].id, content[2]).catch(err => {
+                                if (err.message.includes("Privilege is too low")) {
+                                    eris.createMessage(message.channel.id, "Meu cargo mais alto, não tem privilegio suficiente para expulsar esse individuo, deixe meu cargo mais alto acima do dele, para poder expulsa-lo");
+                                }
+                                return;
+                            });
                             eris.createMessage(message.channel.id, txt);
                         } else {
                             eris.createMessage(message.channel.id, locale(lang.val(), "err.text3")).then(message => setTimeout(function() { message.delete(); }, 5000));

@@ -23,7 +23,12 @@ module.exports = {
                     if (message.channel.guild.members.get(message.author.id).permission.has('manageGuild')) {
                         if (ment[0] != undefined && content[2] != undefined) {
                             var bantext = locale(lang.val(), "ban.text1").replace("${ment[0].username}", ment[0].username).replace("${content[2]}", content[2]);
-                            message.channel.guild.banMember(ment[0].id, 7, content[2]);
+                            message.channel.guild.banMember(ment[0].id, 7, content[2]).catch(err => {
+                                if (err.message.includes("Privilege is too low")) {
+                                    eris.createMessage(message.channel.id, "Meu cargo mais alto, não tem privilegio suficiente para banir esse individuo, deixe meu cargo mais alto acima do dele, para poder bani-lo");
+                                }
+                                return;
+                            });
                             eris.createMessage(message.channel.id, bantext);
                         } else {
                             eris.createMessage(message.channel.id, locale(lang.val(), "ban.text2")).then(message => setTimeout(function() { message.delete(); }, 5000));
