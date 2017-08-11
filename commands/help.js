@@ -32,6 +32,7 @@ module.exports = {
                                 '**>rank [xp | money](opcional)** - Acesse os ranks disponivés\n' +
                                 '**>discrim [number](opcional)** - Veja discriminadores de usuarios que o bot possa ver\n' +
                                 '**>daily** - Pege sua recompensa de hoje\n' +
+                                '**>rep** - Presentei alguém com reputação\n' +
                                 '**>profile** - Veja seu perfil\n'
                         }
                     });

@@ -77,12 +77,12 @@ module.exports = {
                             setuser.child('dyStreak').set(0);
                         }
                         setuser.child('levels/money').set(money + 200);
-                        eris.createMessage(message.channel.id, `OLOKO, você conseguiu resgatar seu daily de hoje, você ganhou 200 Rows.`);
+                        eris.createMessage(message.channel.id, locale(lang.val(), "daily"));
                         setuser.child('daily').set(globalEpoch);
                     } else {
                         var r = Math.abs(now - next);
                         var remain = (r / 1000 + "").toHHMMSS();
-                        eris.createMessage(message.channel.id, `Vai com calme! Espere o tempo de ${remain}.`);
+                        eris.createMessage(message.channel.id, locale(lang.val(), "cooldown.texto").replace("${remain}", remain));
                     }
                 });
             // }

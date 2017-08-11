@@ -30,6 +30,10 @@
         "text2": "**##### Time to Check! #####** \nYour numbers were: ${one} - ${two} - ${three} \n ${message.author.mention}, not this time, you lost: ${content[1]} Rows",
         "text3": "${message.author.mention} - You do not have enough money."
     },
+    "cooldown": {
+        "texto": "Calm down! Wait for the ${remain}."
+    },
+    "daily": "Hey, you managed to redeem your daily today, you've earned 200 Rows.",
     "kick": "I put ${ment[0].username}, out with my magic boot. :Boot: \nReason: ${content[2]}",
     "level": "Your level is ${userdata.child('levels/level').val() ? userdata.child('levels/level').val() : 0} with ${userdata.child('levels/xp').val() ? userdata.child('levels/xp').val() : 0} of xp in total.",
     "mate": {
@@ -74,6 +78,7 @@
             "text": "I can not show the log in the main chat of the server."
         }
     },
+    "rep": "${message.author.username}, gave 1 reputation to ${message.mentions[0].mention}.",
     "yt": {
         "procura": "Searching...",
         "enviado": "**Sent by: **",

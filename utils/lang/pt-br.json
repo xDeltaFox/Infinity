@@ -31,6 +31,10 @@
         "text2": "**##### Hora de checar! #####**\nSeus numeros foram: ${one} - ${two} - ${three}\n${message.author.mention}, não foi dessa vez, você perdeu: ${content[1]} rows",
         "text3": "${message.author.mention} - Você não tem dinheiro suficiente."
     },
+    "cooldown": {
+        "texto": "Vai com calma! Espere o tempo de ${remain}."
+    },
+    "daily": "Hey, você conseguiu resgatar seu daily de hoje, você ganhou 200 Rows.",
     "kick": "Botei ${ment[0].username}, pra fora com minha bota magica. :boot:\nRazão: ${content[2]}",
     "level": "Seu level é ${userdata.child('levels/level').val() ? userdata.child('levels/level').val() : 0} com ${userdata.child('levels/xp').val() ? userdata.child('levels/xp').val() : 0} de xp no total.",
     "mate": {
@@ -75,6 +79,7 @@
             "text": "Não posso mostra o log no chat principal do servidor."
         }
     },
+    "rep": "${message.author.username}, deu 1 de reputação para ${message.mentions[0].mention}.",
     "yt": {
         "procura": "Procurando...",
         "enviado": "**Enviado por: **",

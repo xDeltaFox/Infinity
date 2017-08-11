@@ -27,9 +27,9 @@ module.exports = {
                                     message.channel.guild.addMemberRole(message.mentions[0].id, Data.child('rolemute').val());
                                     setTimeout(function() {
                                         message.channel.guild.removeMemberRole(message.mentions[0].id, Data.child('rolemute').val());
-                                        eris.createMessage(message.channel.id, locale(lang.val(), "mute.text1"));
+                                        eris.createMessage(message.channel.id, locale(lang.val(), "mute.text1").replace("${message.mentions[0].mention}", message.mentions[0].mention));
                                     }, (content[2] * 60000));
-                                    eris.createMessage(message.channel.id, locale(lang.val(), "mute.text2"));
+                                    eris.createMessage(message.channel.id, locale(lang.val(), "mute.text2").replace("${message.mentions[0].username}", message.mentions[0].username).replace("${content[2]}", content[2]));
                                 } else {
                                     eris.createMessage(message.channel.id, locale(lang.val(), "mute.text3"));
                                 }

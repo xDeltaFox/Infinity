@@ -4,6 +4,14 @@ Todos as alteracoes do Infinity vao esta nesse arquivo.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [2.0.6] - 11-08-2017
+### Adicionado
+- Rotação da semana de Heroes of the Storm e League of Legends
+- Reputação
+
+### Alterado
+- Daily, mute, reputação agora está devidamente traduzido
+
 ## [2.0.5] - 07-08-2017
 ### Alterado
 - Tradução para inglês está em 40%
