@@ -2,6 +2,7 @@ let eris = require('../lib/client');
 let firebase = require("firebase");
 let fs = require('fs');
 let config = JSON.parse(fs.readFileSync('./config.json', 'utf8'));
+let locale = require('../utils/lang');
 
 var db = firebase.database();
 var ref = db.ref();

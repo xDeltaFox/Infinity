@@ -45,7 +45,7 @@ module.exports = {
                 .field('**RAM(Usada/Max)**', '```\n' + `${bytesToSize(os.totalmem() - os.freemem())+ "/" +bytesToSize(os.totalmem())}` + '\n```', true)
                 .field('**Uptime**', '```\n' + `${format(process.uptime())}` + '\n```', true)
                 .field('**Website**', 'http://infinitybot.gq/', false)
-                .field('**Servidor Official**', 'https://discord.gg/qE7nWue', true)
+                .field('**Servidor Official**', 'https://discord.gg/thKZC2d', true)
                 .footer("Infinity foi criado por xDeltaFox", eris.user.avatarURL)
                 .send()
         } catch (err) {
