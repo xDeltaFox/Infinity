@@ -29,6 +29,12 @@ class Utils {
     PegarPorcentagemdaBarro(ValorMin, ValorMax, factor) {
         return PegarTamanhodaBarro(ValorMin, ValorMax) * factor;
     }
+
+    geturl(urlArgs) {
+        var urlBase = "https://us.api.battle.net/";
+        var urlOptions = "?locale=pt_BR&apikey=rva5kant7gqcj3cpw7ds4csqr7dk84cd";
+        return JSON.parse(urlBase + urlArgs + urlOptions);
+    }
 }
 
 module.exports = Utils;
