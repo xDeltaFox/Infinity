@@ -25,6 +25,10 @@ module.exports = {
                     var userdata = snapshot.child('Bot/Usuario/' + message.author.id + '/');
                     var serverdata = snapshot.child('Bot/Servidor/' + message.channel.guild.id + '/');
 
+                    if (!userdata.child('personaltxt').val()) {
+                        setuserdata.child('personaltxt').set("Não tem nada para ver aqui");
+                    }
+
                     if (serverdata.child('level').val() == undefined) {
                         setserverdata.child('level').set(false);
                     }
