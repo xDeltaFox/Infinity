@@ -1,0 +1,24 @@
+{
+    "name": "infinity-site",
+    "version": "0.5.0",
+    "description": "",
+    "main": "js/main.js",
+    "scripts": {
+        "build": "browserify js/main.js -o js/app.js"
+    },
+    "author": {
+        "name": "xDeltaFox"
+    },
+    "license": "MIT",
+    "devDependencies": {
+        "browserify": "^14.4.0"
+    },
+    "dependencies": {
+        "express": "^4.15.4",
+        "express-session": "^1.15.5",
+        "passport": "^0.3.2",
+        "passport-discord": "^0.1.2",
+        "request": "^2.81.0",
+        "supertest": "^3.0.0"
+    }
+}

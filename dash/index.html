@@ -1,0 +1,228 @@
+<!doctype html>
+
+<html id="background">
+
+<head>
+    <title>Infinity</title>
+    <link rel="icon" href="./img/logo-infinity.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="./img/logo-infinity.png" type="image/x-icon" />
+    <meta charset="utf-8" />
+    <meta name="description" content="Infinity" />
+    <meta name="author" content="xDeltaFox">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:site_name" content="Website da Infinity">
+    <meta property="og:description" content="Olá, Eu sou o infinity, sou um bot por discord com um simples proposito de diverti-lo e trazer segurança ao seu servidor.">
+    <meta property="og:title" content="Infinity's Website!">
+    <meta property="og:image" content="./img/logo-infinity.png">
+    <meta property="og:ttl" content="600">
+    <meta property="og:image:width" content="320">
+    <meta property="twitter:site" content="Infinity">
+    <meta property="twitter:card" content="summary">
+    <meta property="twitter:title" content="Página inicial">
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/material.min.js"></script>
+    <script src="./js/firebase.js"></script>
+    <script src="js/underscore.js"></script>
+    <script src="https://api.trello.com/1/client.js?key=c36592bb3b33ca813923abd47da7fecb"></script>
+    <script src="js/autosize.min.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script async="" src="https://www.google-analytics.com/analytics.js"></script>
+    <script type="text/javascript" src="./js/main.js"></script>
+    <link rel="stylesheet" href="./css/jquery.flipster.min.css">
+    <link rel="stylesheet" href="./css/animate.css">
+    <link rel="stylesheet" href="./css/estilo.css">
+    <link rel="stylesheet" href="./css/font-awesome.min.css">
+    <link rel="stylesheet" href="./css/material.indigo-pink.min.css">
+    <link rel="stylesheet" href="./css/icon.css">
+</head>
+
+<body>
+    <script>
+        (function(i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function() {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-102694837-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+    <div class="app">
+        <div class="top">
+            <div id="menu-button" onclick="menuview()">
+                <span>Menu</span>
+            </div>
+            <span style="position: relative;top: 10px;/* left: 0px; */color: white;font-size: 1.7em;">Bem-vindo</span>
+            <a href="https://discordapp.com/oauth2/authorize?client_id=313474367847923712&amp;scope=bot&amp;permissions=268823727" target="_blank">
+                <div id="inviti-button">
+                    <img src="./img/infinity.png" width="25px" height="15px" style="position: relative; left: 3px; top: 4px;">
+                    <span>Me adicione!</span>
+                </div>
+            </a>
+            <a href="/auth">
+                <div id="login-button">
+                    <span>Login</span>
+                </div>
+            </a>
+        </div>
+        <div class="world">
+            <div class="menu" style="width: 0%; transition: width 0.5s ease;">
+                <div class="optionDefault" onclick="select('News')" draggable="true">
+                    <div class="wrapperDefaultText wrapper-text">
+                        <div class="contentDefaultText content-text">
+                            <div class="marginReset" style="flex: 0 0 auto;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" class="colorDefaultText-3YhFC6 icon-3tVJnl">
+                                <path class="foreground-2zy1hc" fill="currentColor" d="M2.27333333,12 L2.74666667,9.33333333 L0.08,9.33333333 L0.313333333,8 L2.98,8 L3.68666667,4 L1.02,4 L1.25333333,2.66666667 L3.92,2.66666667 L4.39333333,0 L5.72666667,0 L5.25333333,2.66666667 L9.25333333,2.66666667 L9.72666667,0 L11.06,0 L10.5866667,2.66666667 L13.2533333,2.66666667 L13.02,4 L10.3533333,4 L9.64666667,8 L12.3133333,8 L12.08,9.33333333 L9.41333333,9.33333333 L8.94,12 L7.60666667,12 L8.08,9.33333333 L4.08,9.33333333 L3.60666667,12 L2.27333333,12 L2.27333333,12 Z M5.02,4 L4.31333333,8 L8.31333333,8 L9.02,4 L5.02,4 L5.02,4 Z" transform="translate(1.333 2)"></path>
+                            </svg>
+                            </div>
+                            Página inicial
+                        </div>
+                    </div>
+                </div>
+                <div class="optionDefault" onclick="select('comandos')" draggable="true">
+                    <div class="wrapperDefaultText wrapper-text">
+                        <div class="contentDefaultText content-text">
+                            <div class="marginReset" style="flex: 0 0 auto;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" class="colorDefaultText-3YhFC6 icon-3tVJnl">
+                                <path class="foreground-2zy1hc" fill="currentColor" d="M2.27333333,12 L2.74666667,9.33333333 L0.08,9.33333333 L0.313333333,8 L2.98,8 L3.68666667,4 L1.02,4 L1.25333333,2.66666667 L3.92,2.66666667 L4.39333333,0 L5.72666667,0 L5.25333333,2.66666667 L9.25333333,2.66666667 L9.72666667,0 L11.06,0 L10.5866667,2.66666667 L13.2533333,2.66666667 L13.02,4 L10.3533333,4 L9.64666667,8 L12.3133333,8 L12.08,9.33333333 L9.41333333,9.33333333 L8.94,12 L7.60666667,12 L8.08,9.33333333 L4.08,9.33333333 L3.60666667,12 L2.27333333,12 L2.27333333,12 Z M5.02,4 L4.31333333,8 L8.31333333,8 L9.02,4 L5.02,4 L5.02,4 Z" transform="translate(1.333 2)"></path>
+                            </svg>
+                            </div>
+                            Comandos
+                        </div>
+                    </div>
+                </div>
+                <div class="optionDefault" onclick="select('doacoes')" draggable="true">
+                    <div class="wrapperDefaultText wrapper-text">
+                        <div class="contentDefaultText content-text">
+                            <div class="marginReset" style="flex: 0 0 auto;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" class="colorDefaultText-3YhFC6 icon-3tVJnl">
+                                <path class="foreground-2zy1hc" fill="currentColor" d="M2.27333333,12 L2.74666667,9.33333333 L0.08,9.33333333 L0.313333333,8 L2.98,8 L3.68666667,4 L1.02,4 L1.25333333,2.66666667 L3.92,2.66666667 L4.39333333,0 L5.72666667,0 L5.25333333,2.66666667 L9.25333333,2.66666667 L9.72666667,0 L11.06,0 L10.5866667,2.66666667 L13.2533333,2.66666667 L13.02,4 L10.3533333,4 L9.64666667,8 L12.3133333,8 L12.08,9.33333333 L9.41333333,9.33333333 L8.94,12 L7.60666667,12 L8.08,9.33333333 L4.08,9.33333333 L3.60666667,12 L2.27333333,12 L2.27333333,12 Z M5.02,4 L4.31333333,8 L8.31333333,8 L9.02,4 L5.02,4 L5.02,4 Z" transform="translate(1.333 2)"></path>
+                            </svg>
+                            </div>
+                            Doações
+                        </div>
+                    </div>
+                </div>
+                <div class="optionDefault" onclick="select('dash')" draggable="true">
+                    <div class="wrapperDefaultText wrapper-text">
+                        <div class="contentDefaultText content-text">
+                            <div class="marginReset" style="flex: 0 0 auto;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" class="colorDefaultText-3YhFC6 icon-3tVJnl">
+                                <path class="foreground-2zy1hc" fill="currentColor" d="M2.27333333,12 L2.74666667,9.33333333 L0.08,9.33333333 L0.313333333,8 L2.98,8 L3.68666667,4 L1.02,4 L1.25333333,2.66666667 L3.92,2.66666667 L4.39333333,0 L5.72666667,0 L5.25333333,2.66666667 L9.25333333,2.66666667 L9.72666667,0 L11.06,0 L10.5866667,2.66666667 L13.2533333,2.66666667 L13.02,4 L10.3533333,4 L9.64666667,8 L12.3133333,8 L12.08,9.33333333 L9.41333333,9.33333333 L8.94,12 L7.60666667,12 L8.08,9.33333333 L4.08,9.33333333 L3.60666667,12 L2.27333333,12 L2.27333333,12 Z M5.02,4 L4.31333333,8 L8.31333333,8 L9.02,4 L5.02,4 L5.02,4 Z" transform="translate(1.333 2)"></path>
+                            </svg>
+                            </div>
+                            Dash
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="leftColumn">
+                <div class="content" style="height: 100%;">
+                    <div class="insideContent" style="height: 100%;">
+                        <div class="Caixa">
+                            <div class="News" style="display: inherit;">
+                                <img src="./img/logo-infinity-douado.png" width="150px" height="150px" style="margin: 15px 469px -15px 469px;">
+                                <p style="font-size: 15px; position: relative; top: 30px; text-align: center; width: 75%; margin: auto;">
+                                    Olá, Eu sou o infinity, sou um bot por discord com um simples proposito de diverti-lo e trazer segurança ao seu servidor.
+                                </p>
+                                <p style="font-size: 15px; position: relative; top: 30px; text-align: center; width: 75%; margin: auto;">
+                                    O infinity estará sempre em mudança visando o melhor para seus usuários, então se tiver alguma sugestão, <a href="https://goo.gl/forms/hc5kfRq4YWrlYdCC3" target="_blank" style="text-decoration: none; color: #999999">Clique aqui</a>                                    para mandar pra mim.
+                                </p>
+                            </div>
+                            <div class="comandos" style="display: none;">
+                                <div class="lista_comandos">
+                                    <div class="region_title"><span>Miscêlania</span></div>
+                                    <div class="help_title"><span>bot</span></div>
+                                    <div class="help_title"><span>betroll</span></div>
+                                    <div class="help_title"><span>yt</span></div>
+                                    <div class="help_title"><span>level</span></div>
+                                    <div class="help_title"><span>rank</span></div>
+                                    <div class="help_title"><span>money</span></div>
+                                </div>
+                            </div>
+                            <div class="doacoes" style="display: none;">
+                                <img src="./img/logo-infinity.png" width="150px" height="150px" style="margin: 15px 469px -15px 469px;">
+                                <p style="font-size: 30px; position: relative; top: 30px; text-align: center;">
+                                    Em Breve!!
+                                </p>
+                            </div>
+                            <div class="dash" style="display: none;">
+                                
+                            </div>
+                            <div class="mais">
+                                <a>+</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="rightColumn">
+                <div class="content">
+                    <div class="smTitleBar">Estatísticas</div>
+                    <div class="insideContent">
+                        <div class="estatisticas">
+                            <div style="display: table; width: 100%;">
+                                <div class="statsbar">
+                                    <span class="status">Status</span>
+                                    <div class="holster holster-md online">
+                                        <span id="x">online</span>
+                                    </div>
+                                </div>
+                                <div class="statsbar">
+                                    <span class="status">Sevidores</span>
+                                    <div class="holster pd">
+                                        <span id="guilds">52</span>
+                                    </div>
+                                </div>
+                                <div class="statsbar">
+                                    <span class="status">Usuários</span>
+                                    <div class="holster pd">
+                                        <span id="membres">22524</span>
+                                    </div>
+                                </div>
+                                <div class="statsbar">
+                                    <span class="status">Staff</span>
+                                </div>
+                                <div class="statsbar">
+                                    <img class="hype" src="img/hype.png">
+                                    <span class="status staff-name" style="text-transform: none;">xDeltaFox#8871</span>
+                                    <div class="holster holster-staff online">
+                                        <span id="staff-status">online</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="content">
+                    <div class="smTitleBar">Discords Parceiros</div>
+                    <div class="insideContent">
+                        <div class="discord-link">
+                            <div class="server">
+                                <a href="https://discord.gg/thKZC2d" target="_blank">
+                                    <img src="https://discordapp.com/api/guilds/238977913863536640/embed.png?style=banner2">
+                                </a>
+                            </div>
+                            <div class="server">
+                                <a href="https://discord.gg/xChyMjU" target="_blank">
+                                    <img src="https://discordapp.com/api/guilds/211961331350241280/embed.png?style=banner2">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

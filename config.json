@@ -13,5 +13,12 @@
     "inviteLink": "",
     "errorMessage": "Shit, an error. Report this to Noculi and tell him he sucks.",
     "bannedGuildIds": [],
-    "whitelistedGuildIds": []
+    "whitelistedGuildIds": [],
+    "coreHook": {
+        "id": "",
+        "token": ""
+    },
+    "discordbots": {
+        "token": ""
+    }
 }

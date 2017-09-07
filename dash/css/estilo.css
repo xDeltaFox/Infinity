@@ -1,0 +1,431 @@
+:root {
+    --main-color: #593695;
+    --hover-color: #482b7b;
+    --background-blur: 0px;
+    --background-brightness: 100%;
+}
+
+
+/*All page*/
+
+html,
+body {
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body::-webkit-scrollbar {
+    width: 0px;
+}
+
+button {
+    background: transparent;
+    outline: inherit;
+    border: none;
+}
+
+p {
+    color: #ffffff;
+}
+
+
+/*topper*/
+
+.top {
+    position: relative;
+    width: 100%;
+    height: 40px;
+    background-color: #36393e;
+    box-shadow: 0px 0px 2px;
+    z-index: 999;
+    text-align: center;
+    font-family: "Riot Squad NF", "Alba Regular", Arial, sans-serif;
+}
+
+#menu-button {
+    position: absolute;
+    /* top: 4px; */
+    /* left: 4px; */
+    width: 70px;
+    height: 30px;
+    margin: 5px;
+    border-radius: 5px;
+    background-color: #36393e;
+    /* box-shadow: 0px 0px 1px black; */
+    transition: background-color 0.5s ease;
+    cursor: pointer;
+    text-align: center;
+}
+
+#menu-button span {
+    position: relative;
+    top: 6px;
+    color: #ffffff;
+    font-family: "Riot Squad NF", "Alba Regular", Arial, sans-serif;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+#menu-button:hover {
+    background-color: #212121;
+}
+
+#login-button {
+    position: relative;
+    /* top: -22px; */
+    /* left: 4px; */
+    float: right;
+    width: 70px;
+    height: 30px;
+    margin: 5px;
+    border-radius: 5px;
+    background-color: #36393e;
+    /* box-shadow: 0px 0px 1px black; */
+    transition: background-color 0.5s ease;
+    cursor: pointer;
+    text-align: center;
+}
+
+#login-button span {
+    position: relative;
+    top: 6px;
+    color: #ffffff;
+    font-family: "Riot Squad NF", "Alba Regular", Arial, sans-serif;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+#login-button:hover {
+    background-color: #212121;
+}
+
+
+/*app*/
+
+.app {
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #36393e;
+}
+
+.world {
+    position: relative;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+}
+
+#leftColumn {
+    width: 80%;
+    height: 100%;
+    float: left;
+    position: absolute;
+}
+
+#rightColumn {
+    width: 20%;
+    height: 100%;
+    box-shadow: 0px 0px 1px black;
+    float: right;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.content {
+    /* margin: 10px; */
+    /* border-radius: 5px; */
+    /* background-color: #2d2d2d; */
+    /* background-color: #124578; */
+}
+
+.smTitleBar {
+    position: relative;
+    background-color: #36393e;
+    /* background-color: #593695; */
+    font-family: "Riot Squad NF", "Alba Regular", Arial, sans-serif;
+    text-align: center;
+    color: white;
+    text-shadow: 0 1px #818181;
+    box-shadow: 0px 0px 2px black;
+    font-size: 1.5em;
+    padding: 5px;
+    /* border-radius: 5px 5px 0px 0px; */
+}
+
+
+/*start Region Menu*/
+
+.menu {
+    position: absolute;
+    width: 0%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #2e3136;
+    z-index: 99;
+}
+
+.optionDefault {
+    position: relative;
+}
+
+.wrapper-text {
+    height: 38px;
+    position: relative;
+    overflow: hidden;
+}
+
+.contentDefaultText:hover {
+    background-color: rgba(79, 84, 92, 0.6);
+    color: white;
+}
+
+.content-text {
+    box-sizing: border-box;
+    height: 32px;
+    color: #72767d;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    flex-direction: row;
+    -webkit-box-align: center;
+    align-items: center;
+    padding: 0px 8px;
+    margin: 3px;
+    border-radius: 3px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.marginReset {
+    margin: 0px;
+}
+
+.icon-3tVJnl {
+    margin-right: 4px;
+    display: block;
+    opacity: 0.6;
+}
+
+.colorDefaultText-3YhFC6 {
+    color: rgb(185, 187, 190);
+}
+
+
+/*end Region Menu*/
+
+
+/*LeftColumn*/
+
+.Caixa {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: auto;
+}
+
+.News {
+    width: 100%;
+    height: 100%;
+    overflow-x: auto;
+}
+
+.comandos {
+    /* width: 85%; */
+    /* margin: auto; */
+    height: 100%;
+    /* overflow-x: auto; */
+}
+
+.doacoes {
+    width: 100%;
+    height: 100%;
+    overflow-x: auto;
+}
+
+.dash {
+    padding: 10px 10px;
+}
+
+.comandos::-webkit-scrollbar {
+    width: 0%;
+}
+
+.mais {
+    position: absolute;
+    width: 100%;
+    height: 20px;
+    bottom: 40px;
+    /* border-radius: 0px 0px 5px 5px; */
+    background-color: #348759;
+    text-align: center;
+}
+
+.mais a {
+    color: rgba(0, 0, 0, 1);
+    font-family: Riot Squad NF;
+}
+
+#inviti-button {
+    display: -webkit-inline-box;
+    position: relative;
+    top: 0px;
+    float: right;
+    width: 130px;
+    height: 30px;
+    margin: 5px;
+    /* background-color: #593695; */
+    border-radius: 5px;
+    /* box-shadow: 0px 0px 0px 1px #442973; */
+    transition: background-color 0.5s ease;
+}
+
+#inviti-button span {
+    position: relative;
+    top: 5px;
+    left: 3px;
+    /* font-weight: 500; */
+    font-size: 1.15em;
+    color: #ffffff;
+}
+
+#inviti-button:hover {
+    background-color: #212121;
+}
+
+
+/*RigthColumn*/
+
+.estatisticas {
+    width: 100%;
+    /* height: 200px; */
+    /*overflow-x: auto;*/
+    overflow-y: auto;
+    /*background-color: rgba(255, 255, 255, 1);*/
+}
+
+.estatisticas::-webkit-scrollbar {
+    width: 0px;
+}
+
+.statsbar {
+    background: white;
+    position: relative;
+    right: 20;
+    bottom: 20;
+    /* box-shadow: 1px 1px 1px rgba(0, 0, 0, .4); */
+    /* width: 80%; */
+    line-height: 2.2;
+    height: 32px;
+    /* margin: 10px auto; */
+    padding: 0;
+    /* border-radius: 5px; */
+    overflow: hidden;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 14;
+    background-image: linear-gradient(to right, white, transparent);
+}
+
+.status {
+    color: #2b2b2b;
+    padding: 0;
+    width: 50%;
+    height: 100%;
+    display: inline;
+}
+
+.hype {
+    width: 38px;
+    height: 28px;
+    position: absolute;
+    top: 2px;
+    left: 43%;
+}
+
+.online,
+.dnd {
+    background: #59b460;
+}
+
+.stream {
+    background: #593695;
+}
+
+.offline {
+    background: red;
+}
+
+.pd {
+    background: #593695;
+}
+
+.holster {
+    height: 100%;
+    text-align: center;
+    width: 50%;
+    display: inline-block;
+    float: right;
+}
+
+.discord-link {
+    width: 100%;
+    /* height: 200px; */
+    overflow-x: auto;
+    overflow-y: auto;
+}
+
+.server {
+    width: 93%;
+    margin: 10px auto;
+}
+
+.discord-link::-webkit-scrollbar {
+    width: 0px;
+}
+
+.discord-link img {
+    border-radius: 2.5em;
+    width: 100%;
+}
+
+
+/*Start Region Help*/
+
+.lista_comandos {
+    height: 100%;
+    width: 15%;
+    box-shadow: 0px 0px 2px black;
+    position: absolute;
+    left: 0px;
+}
+
+.region_title {
+    font-size: 1.25em;
+    font-weight: 700;
+    padding: 5px;
+}
+
+.help_title {
+    font-size: 1em;
+    padding-left: 20px;
+    transition: background-color 0.5s ease;
+}
+
+.help_title:hover {
+    background-color: #ffffff;
+}
+
+
+/*End Region Help*/

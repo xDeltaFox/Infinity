@@ -1,0 +1,95 @@
+{
+    "sc": {
+        "namecity": "Nome da cidade",
+        "founded": "Ano fundado",
+        "money": "Dinheiro",
+        "populacao": "População"
+    },
+    "err": {
+        "text1": "Burro, mencione alguém.",
+        "text2": ":fire: Vou te queimar, se continuar fazendo coisa que não deve. tem que ter a permissão `/perm/`",
+        "text3": ":no_entry_sign: Errow, mencione alguém, besta.",
+        "text4": "Me chama, e fica inativo me deixando no vacuo, muito obrigrado por nada, "
+    },
+    "ameaça": ":gun:  |  **Gravidade do Crime: (${numero}%)**\n**${message.mentions[0].username}** ${aleatorio[0]}",
+    "ameaçatexto": {
+        "texto1": "é um ninguém. Então nada será feito, pra sua sorte, seu safado.",
+        "texto2": "é suspeito de um crime que ocorreu, há uns dias. Então nosso umpas lupas ficaram na sua cola, pro caso de você resolva matar alguém.",
+        "texto3": "está planejando a dominação do mundo. É bom alguém para-lo, antes que eu taque fogo na porra toda. :fire:",
+        "texto4": "é a pessoa mais procurada da policia federal. Cacete tem um monte de vagabundos online, e ninguém faz porra nenhuma.",
+        "texto5": "queime, queime descraçado. :fire: nenhum procurado pela Interpol vai passa por mim, e ficar impune, seu merda."
+    },
+    "ball": {
+
+    },
+    "ban": {
+        "text1": "Bani ${ment[0].username}, e taquei fogo nas mensagens deste usuário. :fire:\nRazão: ${content[2]}",
+        "text2": ":no_entry_sign: Errow, mencione alguém, besta."
+    },
+    "betroll": {
+        "text1": "**##### Hora de checar! #####**\nSeus numeros foram: ${one} - ${two} - ${three}\n##### Duplos, Parábens! #####\n${message.author.mention}, você ganhou: ${content[1]*2} rows",
+        "text2": "**##### Hora de checar! #####**\nSeus numeros foram: ${one} - ${two} - ${three}\n${message.author.mention}, não foi dessa vez, você perdeu: ${content[1]} rows",
+        "text3": "${message.author.mention} - Você não tem dinheiro suficiente."
+    },
+    "cooldown": {
+        "texto": "Vai com calma! Espere o tempo de ${remain}."
+    },
+    "daily": "Hey, você conseguiu resgatar seu daily de hoje, você ganhou 200 Rows.",
+    "kick": "Botei ${ment[0].username}, pra fora com minha bota magica. :boot:\nRazão: ${content[2]}",
+    "level": "Seu level é ${level} com ${exp} de xp no total.",
+    "mate": {
+        "txt1": "${message.author.username} matou ${message.mentions[0].username}",
+        "txt2": "${message.author.username} falhou em matar ${message.mentions[0].username}",
+        "consequencia1": "**${name}** foi preso por assassinato",
+        "consequencia2": "**${name}** foi preso por tentativa de assassinato",
+        "consequencia3": "**${name}** fugiu das autoridades locais"
+    },
+    "money": {
+        "add": "Add #500 Rows a sua carteira - ${message.author.mention}",
+        "has": "Você tem ${money} de row."
+    },
+    "mute": {
+        "text1": "${message.mentions[0].mention} seu castigo acabou, está livre.",
+        "text2": "Mutei, ${message.mentions[0].username} daqui a ${content[2]} minuto(s) tá de volta fazendo merda de novo.",
+        "text3": "Porque, você não seta o cargo de mute, antes de mutar alguém. Comando: >rolemute (nome do cargo)",
+        "err": {
+            "err1": "Por quanto tempo, quer que eu mute esse individuo?!",
+            "err2": "Cadê a menção?",
+            "err3": ":fire: Vou te queimar, se continuar fazendo coisa que não deve. tem que ter a permissão `manageGuild`"
+        }
+    },
+    "log": {
+        "channelCreate": {
+            "ativado": "Sistema de logs channelCreate foi ativado no server: ",
+            "desativado": "Sistema de logs channelCreate foi desativado no server: "
+        },
+        "channelDelete": {
+            "ativado": "Sistema de logs channelDelete foi ativado no server: ",
+            "desativado": "Sistema de logs channelDelete foi desativado no server: "
+        },
+        "guildBanAdd": {
+            "ativado": "Sistema de logs guildBanAdd foi ativado no server: ",
+            "desativado": "Sistema de logs guildBanAdd foi desativado no server: "
+        },
+        "guildBanRemove": {
+            "ativado": "Sistema de logs guildBanRemove foi ativado no server: ",
+            "desativado": "Sistema de logs guildBanRemove foi desativado no server: "
+        },
+        "err": {
+            "text": "Não posso mostra o log no chat principal do servidor."
+        }
+    },
+    "rep": "${message.author.username}, deu 1 de reputação para ${message.mentions[0].mention}.",
+    "yt": {
+        "procura": "Procurando...",
+        "enviado": "**Enviado por: **",
+        "publicado": "**Publicado em: **",
+        "descricao": "**Descrição: **",
+        "voicechannel": ":x: ${message.author.username} - Você não está em um canal de voz.",
+        "err": {
+            "bad1": "URL incorreto!",
+            "bad2": "URL incorreto ou faltando!",
+            "bad3": "Eu não tenho permissões para se juntar a esse canal!"
+        }
+    }
+}
