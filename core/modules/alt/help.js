@@ -17,7 +17,7 @@ module.exports = {
             eris.getDMChannel(message.author.id).then(dm => {
                 eris.sendChannelTyping(dm.id);
                 setTimeout(function() {
-                    eris.createMessage(dm.id, "**Você está convidado para o meu servidor oficial!** https://discord.gg/thKZC2d \n" + "**Convide-me para seu server!** https://discordapp.com/oauth2/authorize?client_id=313474367847923712&scope=bot&permissions=305155286 \n E acesse o site o Infinity: http://www.infinitybot.gq/ \n" + "**Servers Parceiros** \n" + "**Apydle:** https://discord.gg/7wHFevQ");
+                    eris.createMessage(dm.id, "**Você está convidado para o meu servidor oficial!** *Em Breve* \n" + "**Convide-me para seu server!** __https://discordapp.com/oauth2/authorize?client_id=361264763440726021%20&scope=bot&permissions=2146958463__ \n" + "**Servers Parceiros** \n" + "**Apydle:** https://discord.gg/gTUHDRF");
                     eris.createMessage(dm.id, {
                         embed: {
                             color: Math.floor(Math.random() * 16777216),
