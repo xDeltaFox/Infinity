@@ -1,8 +1,9 @@
-let client = require("../client");
+let client = require("../../client");
 let eris = client.eris;
 let fs = require('fs');
 let moment = require('moment');
 var tz = require('moment-timezone');
+var erisTools = require('../../utils/erisTools');
 let config = JSON.parse(fs.readFileSync('./config.json', 'utf8'));
 
 moment().format();
@@ -16,18 +17,6 @@ module.exports = {
         try {
             eris.createMessage(config.starbucks, "[`" + message.channel.guild.name + "`" + "~>" + "`" + message.channel.name + "`]" + "**" + message.author.username + "**:" + message.content);
 
-            function role(member) {
-                var roles = message.channel.guild.members.get(member).roles;
-                var text = "";
-                console.dir(roles);
-                if (roles && roles.length > 0) {
-                    return roles.map(r => message.channel.guild.roles.get(r).name).join(', ');
-                } else {
-                    text = "Este usuario não tem cargos";
-                    return text;
-                }
-            }
-
             if (message.mentions[0] == undefined) {
 
                 var game = "";
@@ -35,18 +24,6 @@ module.exports = {
                     game = "Nada";
                 } else {
                     game = message.member.game.name;
-                }
-
-                function status() {
-                    if (message.channel.guild.members.get(message.member.id).status === 'online') {
-                        return 'Online';
-                    } else if (message.channel.guild.members.get(message.member.id).status === 'dnd') {
-                        return 'Ocupado';
-                    } else if (message.channel.guild.members.get(message.member.id).status === 'idle') {
-                        return 'Ausente';
-                    } else if (message.channel.guild.members.get(message.member.id).status === 'offline') {
-                        return 'Offline';
-                    }
                 }
 
                 function statusemoji() {
@@ -73,7 +50,7 @@ module.exports = {
                         },
                         fields: [{
                             name: '**#** Informações do(a) ' + message.member.username + "#" + message.member.discriminator,
-                            value: `**:bust_in_silhouette: Usuario**: ${message.member.username}\n**${statusemoji()} Status**: ${status()}\n**<:GameController:338766079746637826> Jogo**: ${game}\n**:calendar: Conta criada em**: ${moment(message.member.createdAt).format("llll")}\n**:calendar: Entrou no server em**: ${moment(message.member.joinedAt).format("llll")}\n**:briefcase: Cargos**: ${role(message.member.id)}`,
+                            value: `**:bust_in_silhouette: Usuario**: ${message.member.username}\n**${statusemoji()} Status**: ${erisTools.userStatus(message.member, message.channel.guild)}\n**<:GameController:338766079746637826> Jogo**: ${game}\n**:calendar: Conta criada em**: ${moment(message.member.createdAt).format("llll")}\n**:calendar: Entrou no server em**: ${moment(message.member.joinedAt).format("llll")}\n**:briefcase: Cargos**: ${erisTools.userRole(message.member, message.channel.guild)}`,
                             inline: true
                         }]
                     }
@@ -84,18 +61,6 @@ module.exports = {
                     game = "Nada";
                 } else {
                     game = message.mentions[0].game.name;
-                }
-
-                function status() {
-                    if (message.channel.guild.members.get(message.mentions[0].id).status === 'online') {
-                        return 'Online';
-                    } else if (message.channel.guild.members.get(message.mentions[0].id).status === 'dnd') {
-                        return 'Ocupado';
-                    } else if (message.channel.guild.members.get(message.mentions[0].id).status === 'idle') {
-                        return 'Ausente';
-                    } else if (message.channel.guild.members.get(message.mentions[0].id).status === 'offline') {
-                        return 'Offline';
-                    }
                 }
 
                 function statusemoji() {
@@ -122,7 +87,7 @@ module.exports = {
                         },
                         fields: [{
                             name: '**#** Informações do(a) ' + message.mentions[0].username + "#" + message.mentions[0].discriminator,
-                            value: `**:bust_in_silhouette: Usuario**: ${message.mentions[0].username}\n**${statusemoji()} Status**: ${status()}\n**<:GameController:338766079746637826> Jogo**: ${game}\n**:calendar: Conta criada em**: ${moment(message.mentions[0].createdAt).format("llll")}\n**:calendar: Entrou no server em**: ${moment(message.mentions[0].joinedAt).format("llll")}\n**:briefcase: Cargos**: ${role(message.mentions[0].id)}`,
+                            value: `**:bust_in_silhouette: Usuario**: ${message.mentions[0].username}\n**${statusemoji()} Status**: ${erisTools.userStatus(message.mentions[0], message.channel.guild)}\n**<:GameController:338766079746637826> Jogo**: ${game}\n**:calendar: Conta criada em**: ${moment(message.mentions[0].createdAt).format("llll")}\n**:calendar: Entrou no server em**: ${moment(message.mentions[0].joinedAt).format("llll")}\n**:briefcase: Cargos**: ${erisTools.userRole(message.mentions[0], message.channel.guild)}`,
                             inline: true
                         }]
                     }

@@ -8,7 +8,8 @@
     "err": {
         "text1": "Dude, mention somebody.",
         "text2": "I'll burn you if you keep doing something you should not. You must have permission `/perm/`",
-        "text3": ":no_entry_sign: Errow, mention somebody, beast."
+        "text3": ":no_entry_sign: Errow, mention somebody, beast.",
+        "text4": "Call me, and stay inactive leaving me in the vacuum, very obliged for nothing."
     },
     "ameaça": ":gun:  |  **Gravity of Crime: (${numero}%)**\n**${message.mentions[0].username}** ${aleatorio[0]}",
     "ameaçatexto": {
@@ -18,8 +19,11 @@
         "texto4": "Is the most wanted person of the federal police. Bludgeon has a lot of homeless people online, and nobody fucking does.",
         "texto5": "Burn it, burn it up. :Fire: none sought by Interpol will pass me, and get away with it, you shit."
     },
-    "ball": {
-
+    "autorole": {
+        "text1": "You can tell me what the job is for me to set, or it's difficult.",
+        "text2": "${content} is not a real charge.",
+        "text3": "${ment.name} was set, as auto-role activated.",
+        "text4": "${ment.name} was set, as auto-role disabled."
     },
     "ban": {
         "text1": "Bani ${ment[0].username}, and put fire on messages from this user. :Fire: \nReason: $ {content [2]}",
@@ -78,6 +82,7 @@
             "text": "I can not show the log in the main chat of the server."
         }
     },
+    "prune": "${cont} messages have been deleted.",
     "rep": "${message.author.username}, gave 1 reputation to ${message.mentions[0].mention}.",
     "yt": {
         "procura": "Searching...",

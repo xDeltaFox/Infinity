@@ -1,6 +1,6 @@
 let fs = require('fs');
 let os = require('os');
-let client = require("../client");
+let client = require("../../client");
 let eris = client.eris;
 let config = JSON.parse(fs.readFileSync('./config.json', 'utf8'));
 
@@ -36,10 +36,11 @@ module.exports = {
             message.channel.createEmbed()
                 .author("To infinity and beyond", eris.user.avatarURL)
                 .color(Math.floor(Math.random() * 16777216))
-                .field('**Library**', '```\nEris v0.7.0 (by abalabahaha)\n```', false)
-                .field('**Versão do Infinity**', '```\n' + `${config.botVersion}` + '\n```', true)
+                .field('**Library**', '```\nEris v0.7.2 (by abalabahaha)\n```', true)
                 .field('**Linguagem**', '```\nJavaScript\n```', true)
+                .field('**Versão do Infinity**', '```\n' + `${config.botVersion}` + '\n```', true)
                 .field('**Prefix**', '```\n>\n```', true)
+                .field('**Comandos**', '```\nInfinity tem ' + client.commandsCount + ' comandos\n```', true)
                 .field('**Servidores**', '```\n' + `${eris.guilds.size}` + '\n```', true)
                 .field('**Shards**', '```\n' + `${eris.shards.size}` + '\n```', true)
                 .field('**Usuários**', '```\n' + `${eris.users.size}` + '\n```', true)

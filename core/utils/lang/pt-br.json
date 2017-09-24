@@ -9,7 +9,7 @@
         "text1": "Burro, mencione alguém.",
         "text2": ":fire: Vou te queimar, se continuar fazendo coisa que não deve. tem que ter a permissão `/perm/`",
         "text3": ":no_entry_sign: Errow, mencione alguém, besta.",
-        "text4": "Me chama, e fica inativo me deixando no vacuo, muito obrigrado por nada, "
+        "text4": "Me chama, e fica inativo me deixando no vacuo, muito obrigrado por nada."
     },
     "ameaça": ":gun:  |  **Gravidade do Crime: (${numero}%)**\n**${message.mentions[0].username}** ${aleatorio[0]}",
     "ameaçatexto": {
@@ -19,8 +19,11 @@
         "texto4": "é a pessoa mais procurada da policia federal. Cacete tem um monte de vagabundos online, e ninguém faz porra nenhuma.",
         "texto5": "queime, queime descraçado. :fire: nenhum procurado pela Interpol vai passa por mim, e ficar impune, seu merda."
     },
-    "ball": {
-
+    "autorole": {
+        "text1": "Você pode me dizer o que o trabalho é para eu definir, ou é difícil.",
+        "text2": "${content} não é um cargo real.",
+        "text3": "${ment.name} foi setado, como auto-role ativado.",
+        "text4": "${ment.name} foi setado, como auto-role desativado."
     },
     "ban": {
         "text1": "Bani ${ment[0].username}, e taquei fogo nas mensagens deste usuário. :fire:\nRazão: ${content[2]}",
@@ -79,6 +82,7 @@
             "text": "Não posso mostra o log no chat principal do servidor."
         }
     },
+    "prune": "Foi deletado ${cont} mensagens.",
     "rep": "${message.author.username}, deu 1 de reputação para ${message.mentions[0].mention}.",
     "yt": {
         "procura": "Procurando...",

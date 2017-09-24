@@ -1,8 +1,8 @@
-let client = require("../client");
+let client = require("../../client");
 let eris = client.eris;
 let fs = require('fs');
 let config = JSON.parse(fs.readFileSync('./config.json', 'utf8'));
-let gear = require("../utils/gearboxes");
+let gear = require("../../utils/gearboxes");
 
 module.exports = {
     label: 'lang',

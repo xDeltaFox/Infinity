@@ -2,7 +2,8 @@ let client = require('../client');
 let eris = client.eris;
 let request = require('request');
 let gear = require('../utils/gearboxes');
-let config = JSON.parse(fs.readFileSync('../../config.json', 'utf8'));
+let fs = require('fs');
+let config = JSON.parse(fs.readFileSync('./config.json', 'utf8'));
 
 module.exports = {
     event: 'ready',
@@ -10,7 +11,9 @@ module.exports = {
     handler: () => {
         console.log('Estou pronto!');
 
-        eris.createChannelWebhook(350469006433714186, { name: "Infinity", avatar: "https://cdn.discordapp.com/avatars/313474367847923712/609348182f65bc414e617846b1258571.webp?size=256" }).then(webhook => {
+        client.setupInfinity();
+
+        eris.createChannelWebhook(config.HookChannelID, { name: "Infinity", avatar: "https://cdn.discordapp.com/avatars/313474367847923712/609348182f65bc414e617846b1258571.webp?size=256" }).then(webhook => {
             eris.executeWebhook(webhook.id, webhook.token, {
                 content: "",
                 embeds: {

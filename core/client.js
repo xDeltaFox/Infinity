@@ -1,3 +1,5 @@
+'use strict';
+
 let Eris = require("eris-additions")(require("eris"));
 let fs = require('fs');
 let config = JSON.parse(fs.readFileSync('./config.json', 'utf8'));
@@ -7,6 +9,10 @@ let moment = require('moment');
 let gear = require('./utils/gearboxes');
 
 console.log('          --- - - - - = = = = = = Iniciando Infinity...');
+
+//-------------Variaveis "Globais"-------------
+
+var commandsCount = 0;
 
 let eris = new Eris.CommandClient(config.token, {
     messageLimit: 250,
@@ -54,18 +60,24 @@ function format(seconds) {
 console.log('          --- - - - - = = = = = = Carregando a database...');
 const DB = gear.DB
 const userDB = gear.userDB
-var defaults = require("./utils/defaults") // Database Defaults
+var defaults = require("./utils/defaults"); // Database Defaults
 console.log('          --- - - - - = = = = = = Database carregada.');
 
 //DASHBOARD INIT
 console.log('          --- - - - - = = = = = = Carregando o Dash...');
-const dash = require("../dash/host")
+const dash = require("../dash/host"); // Website
 dash.init(eris, DB, userDB)
 console.log('          --- - - - - = = = = = = Dash carregado...');
 
-if (!DB.get("infinity") || DB.get("infinity") == undefined) {
+function setupInfinity() {
     console.log('          --- - - - - = = = = = = Verificando Infinity...');
-    DB.set("infinity", defaults.global);
+    if (!DB.get("infinity") || DB.get("infinity") == undefined) {
+        DB.set("infinity", defaults.global);
+    }
+
+    if (!userDB.get(eris.user.id) || userDB.get(eris.user.id) == undefined) {
+        userDB.set(eris.user.id, defaults.infinty);
+    }
 }
 
 var serverSetup = function serverSetup(guild) {
@@ -124,9 +136,9 @@ setInterval(function() {
     if (date.getHours() === 3) {
         console.log('          --- - - - - = = = = = = Iniciando Update(all time).');
         let epc = date.getTime();
-        gear.userDefine(eris.user, "epochStamp", date);
-        if (!userDB.get(eris.user.id).dailyEpoch) {
-            gear.userDefine(eris.user, "dailyEpoch", epc);
+        gear.superuserDefine(eris.user, "epochStamp", date);
+        if (!userDB.get(eris.user.id).dailyEpoch || userDB.get(eris.user.id).dailyEpoch == undefined) {
+            gear.superuserDefine(eris.user, "dailyEpoch", epc);
         }
         var botEntry = userDB.get(eris.user.id);
         try {
@@ -146,10 +158,24 @@ setInterval(function() {
     DB.get("infinity").totalUsers = eris.users.size;
 }, 15000);
 
+//------------------STATUS------------------
+
+var i = 0;
+
 setInterval(() => { // Update the bot's status for each shard every 10 minutes
-    let listgames = JSON.parse(fs.readFileSync('./listgames.json', 'utf8'));
+    let listgames = JSON.parse(fs.readFileSync('./core/listgames.json', 'utf8'));
+    var status = [
+        `${listgames.games[Math.floor(Math.random() * listgames.games.length)]} em ${eris.guilds.size} servidores || >ajuda`,
+        `${listgames.games[Math.floor(Math.random() * listgames.games.length)]} para ${eris.users.size} usuarios || >ajuda`,
+        `Entre no meu servidor! https://discord.gg/thKZC2d`,
+        `${listgames.games[Math.floor(Math.random() * listgames.games.length)]} á ${format(process.uptime())}`
+    ];
     if (listgames.length !== 0 && eris.uptime !== 0) {
-        eris.editStatus("online", { name: `${listgames.games[Math.floor(Math.random() * listgames.games.length)]} em ${eris.guilds.size} servidores || >ajuda`, type: 1, url: 'https://www.twitch.tv/xdeltafox1' });
+        i++;
+        if (i > status.length - 1) {
+            i = 0;
+        }
+        eris.editStatus("online", { name: status[i], type: 1, url: 'https://www.twitch.tv/xdeltafox1' });
     }
 }, 30000);
 
@@ -160,5 +186,7 @@ module.exports = {
     userDB: userDB,
     serverSetup: serverSetup,
     userSetup: userSetup,
-    channelSetup: channelSetup
+    channelSetup: channelSetup,
+    setupInfinity: setupInfinity,
+    commandsCount: commandsCount
 };

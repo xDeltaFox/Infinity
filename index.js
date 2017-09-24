@@ -5,12 +5,15 @@ console.log('Carregando eris.');
 let client = require('./core/client');
 let eris = client.eris;
 
+console.log('Carregando website.');
+let website = require('./dash/host');
+
 //======================================//
 //      CAREGANDO COMANDOS
 //======================================//
 
 let files = fs.readdirSync('./core/modules');
-for (i = 0; i < files.length; i++) {
+for (var i = 0; i < files.length; i++) {
     let filedir = './core/modules/' + files[i]
     fs.readdir(filedir, (err, files) => {
         if (err) {
@@ -23,6 +26,7 @@ for (i = 0; i < files.length; i++) {
                         let cmd = eris.registerCommand(c.label, c.generator, c.options);
                         registerSubcommands(c, cmd);
                         console.log('Comando ' + c.label + ' foi carregado com sucesso.');
+                        client.commandsCount++;
 
                         function registerSubcommands(cmd, parent) {
                             cmd.subcommands = cmd.subcommands || [];

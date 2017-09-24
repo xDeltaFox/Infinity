@@ -1,4 +1,4 @@
-let client = require("../client");
+let client = require("../../client");
 let eris = client.eris;
 let moment = require('moment');
 let fs = require('fs');

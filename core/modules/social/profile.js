@@ -1,12 +1,12 @@
-let client = require("../client");
+let client = require("../../client");
 let eris = client.eris;
-let gear = require('../utils/gearboxes');
+let gear = require('../../utils/gearboxes');
 let fs = require('fs');
 let arraySort = require('array-sort');
 let Canvas = require('canvas');
 let pixelUtil = require('pixel-util');
 let config = JSON.parse(fs.readFileSync('./config.json', 'utf8'));
-let Utils = require('../utils/Utils');
+let Utils = require('../../utils/Utils');
 
 var utils = new Utils();
 
@@ -84,9 +84,9 @@ module.exports = {
                 var percent = (((Number(exp) - Number(exptoThis)) / frameofact) * 100).toFixed(0);
 
                 try {
-                    largura = (316 / 100) * percent;
+                    largura = (400 / 100) * percent;
                 } catch (e) {
-                    largura = 316;
+                    largura = 400;
                 }
 
                 // Perfil
@@ -102,14 +102,14 @@ module.exports = {
                     pixelUtil.createBuffer(message.author.avatarURL).then(buffer => {
                         image.src = buffer;
 
-                        ctx.drawImage(image, 114, 18, 83, 83);
+                        ctx.drawImage(image, 148, 26, 93, 93);
 
                         ctx.save();
 
                         ctx.globalCompositeOperation = "destination-atop";
 
                         ctx.beginPath();
-                        ctx.arc(155.5, 59.5, 43, 0, Math.PI * 2, true);
+                        ctx.arc(193.5, 75.5, 53, 0, Math.PI * 2, true);
                         ctx.fillStyle = '#ffffff';
                         ctx.fill();
                         ctx.closePath();
@@ -131,27 +131,27 @@ module.exports = {
                                 // Username
                                 ctx.font = '14px Arial';
                                 ctx.fillStyle = '#000000';
-                                ctx.fillText(`${message.author.username}`, 113, 143);
+                                ctx.fillText(`${message.author.username}`, 160, 177);
 
                                 // Level
                                 ctx.font = '14px Arial';
                                 ctx.fillStyle = '#000000';
-                                ctx.fillText(`${level}`, 43, 38);
+                                ctx.fillText(`${level}`, 55, 47);
 
                                 // Money
                                 ctx.font = '14px Arial';
                                 ctx.fillStyle = '#000000';
-                                ctx.fillText(`₹${money}`, 244, 38);
+                                ctx.fillText(`₹${money}`, 315, 47);
 
                                 // Rank
                                 ctx.font = '14px Arial';
                                 ctx.fillStyle = '#000000';
-                                ctx.fillText(`#${rank}`, 38, 78);
+                                ctx.fillText(`#${rank}`, 55, 100);
 
                                 // Exp
                                 ctx.font = '14px Arial';
                                 ctx.fillStyle = '#000000';
-                                ctx.fillText(`${percent}% [${exp}/${exptoNex}]`, 35, 230);
+                                ctx.fillText(`${percent}% [${exp}/${exptoNex}]`, 45, 280);
 
                                 msg.edit("Gerando perfil..." + "\n`Pegando background`").catch()
                                 pixelUtil.createBuffer(background).then(buffer => {

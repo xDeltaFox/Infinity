@@ -1,4 +1,4 @@
-let client = require("../client");
+let client = require("../../client");
 let eris = client.eris;
 let moment = require("moment");
 let tz = require("moment-timezone");
@@ -17,7 +17,7 @@ module.exports = {
             eris.getDMChannel(message.author.id).then(dm => {
                 eris.sendChannelTyping(dm.id);
                 setTimeout(function() {
-                    eris.createMessage(dm.id, "**Você está convidado para o meu servidor oficial!** https://discord.gg/thKZC2d \n" + "**Convide-me para seu server!** https://discordapp.com/oauth2/authorize?client_id=313474367847923712&scope=bot&permissions=305155286 \n E acesse o site o Infinity: http://www.infinitybot.gq/ \n" + "**Servers Parceiros** \n" + "**Apydle:** https://discord.gg/gz2HqNc");
+                    eris.createMessage(dm.id, "**Você está convidado para o meu servidor oficial!** https://discord.gg/thKZC2d \n" + "**Convide-me para seu server!** https://discordapp.com/oauth2/authorize?client_id=313474367847923712&scope=bot&permissions=305155286 \n E acesse o site o Infinity: http://www.infinitybot.gq/ \n" + "**Servers Parceiros** \n" + "**Apydle:** https://discord.gg/7wHFevQ");
                     eris.createMessage(dm.id, {
                         embed: {
                             color: Math.floor(Math.random() * 16777216),
@@ -52,17 +52,6 @@ module.exports = {
                         embed: {
                             color: Math.floor(Math.random() * 16777216),
                             author: {
-                                name: 'Musica',
-                                icon_url: eris.user.avatarURL
-                            },
-                            description: '**>m tocar [nome da musica]** - Vamos ouvir uma musica?\n' +
-                                '**>m parar** - Remova o bot do canal de voz\n'
-                        }
-                    });
-                    eris.createMessage(dm.id, {
-                        embed: {
-                            color: Math.floor(Math.random() * 16777216),
-                            author: {
                                 name: 'Entretenimento',
                                 icon_url: eris.user.avatarURL
                             },
@@ -80,10 +69,7 @@ module.exports = {
                                 name: 'Adminstração',
                                 icon_url: eris.user.avatarURL
                             },
-                            description: '**>uptime** - Mostar o tempo que o bot esta ligado na tomada\n' +
-                                '**>roleadd [role_name]** - Add um cargo ao usuario\n' +
-                                '**>roleremove [role_name]** - remove o cargo de um usuario\n' +
-                                '**>autorole [role_name]** - Defina um auto-role\n' +
+                            description: '**>autorole [role_name]** - Defina um auto-role\n' +
                                 '**>limpar [number]** - Limpe quantas menssagens quiser\n' +
                                 '**>kick [mention] [motivo]** - Kicka um usuario do server(Tem que ter permissão `serverGuild` pra pode usar)\n' +
                                 '**>ban [mention] [motivo]** - bani por 7 dias um usuario do server(Tem que ter permissão `serverGuild` pra pode usar)\n' +
@@ -91,19 +77,7 @@ module.exports = {
                                 '**>rolemute [nome do cargo]** - Sete o cargo de mute no seu server(Tem que ter permissão `serverGuild` pra pode usar)\n' +
                                 '**>destroy** - Destrua os dados do seu servidor (MAS CUIDADO, USOU JÁ ERA. NÃO TEM VOLTA!)\n\n' +
                                 '**>oninvite** - Ative o sistema anti-convite no server\n\n' +
-                                '**>lang [en || pt]** - Que lingua quer que eu fale?\n\n' +
-                                '**Log de moderação:**\n' +
-                                '**>logmessageupdate** - Log `MessageUpdate`\n' +
-                                '**>logchannelcreate** - Log `channelCreate`\n' +
-                                '**>logchanneldelete** - Log `channelDelete`\n' +
-                                '**>logguildbanremove** - Log `guildBanRemove`\n' +
-                                '**>logguildmemberadd** - Log `guildMemberAdd`\n' +
-                                '**>logguildmemberremove** - Log `guildMemberRemove`\n' +
-                                '**>logguildrolecreate** - Log `guildRoleCreate`\n' +
-                                '**>logguildroledelete** - Log `guildRoleDelete`\n' +
-                                '**>logguildbanadd** - Log `guildBanAdd`\n' +
-                                '**>logchannel** - Altere o canal de log\n' +
-                                '**>logvoicechannelswitch** - Log `voiceChannelSwitch`'
+                                '**>lang [en || pt]** - Que lingua quer que eu fale?'
                         }
                     });
                     eris.createMessage(dm.id, {

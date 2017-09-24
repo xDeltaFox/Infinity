@@ -1,9 +1,9 @@
-let client = require('../client');
+let client = require('../../client');
 let eris = client.eris;
 let fs = require('fs');
 let config = JSON.parse(fs.readFileSync('./config.json', 'utf8'));
-let locale = require('../utils/lang');
-let gear = require('../utils/gearboxes');
+let locale = require('../../utils/lang');
+let gear = require('../../utils/gearboxes');
 
 String.prototype.toHHMMSS = function() {
     var sec_num = parseInt(this, 10); // don't forget the second param
@@ -50,10 +50,10 @@ module.exports = {
             var userData = userDB.get(Author.id).modules;
 
             //-----------------MAGIC---------------------
-            if (!userDB.get(eris.user.id).dailyEpoch) {
+            if (!userDB.get(eris.user.id).dailyEpoch || userDB.get(eris.user.id).dailyEpoch == undefined) {
                 gear.superuserDefine(eris.user, "dailyEpoch", 1500271200000)
             }
-            if (!userDB.get(eris.user.id).epochStamp) {
+            if (!userDB.get(eris.user.id).epochStamp || userDB.get(eris.user.id).epochStamp == undefined) {
                 gear.superuserDefine(eris.user, "epochStamp", new Date(1500271200000))
             }
             if (!userDB.get(Author.id).modules.daily) {

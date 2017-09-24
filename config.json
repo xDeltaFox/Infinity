@@ -1,24 +1,19 @@
 {
-    "token": "TOKEN",
-    "shardCount": 0,
-    "botVersion": "",
+    "token": "",
+    "shardCount": 3,
+    "botVersion": "2.0.7",
     "prefix": ">",
-    "adminIds": [""],
-    "logChannel": "",
-    "logGuild": "",
-    "logDestroyer": "",
-    "starbucks": "",
+    "adminIds": ["238975494047924224"],
+    "logChannel": "337947956139261953",
+    "logGuild": "335247407954526209",
+    "logDestroyer": "337948709071355914",
+    "starbucks": "339234160042442752",
     "logTimestamp": false,
     "cleverbot": false,
-    "inviteLink": "",
+    "inviteLink": "https://discordapp.com/oauth2/authorize?client_id=313474367847923712&scope=bot&permissions=268823727",
     "errorMessage": "Shit, an error. Report this to Noculi and tell him he sucks.",
     "bannedGuildIds": [],
     "whitelistedGuildIds": [],
-    "coreHook": {
-        "id": "",
-        "token": ""
-    },
-    "discordbots": {
-        "token": ""
-    }
+    "HookChannelID": "309478380787597312",
+    "eyesChannelID": "355766812610396170"
 }

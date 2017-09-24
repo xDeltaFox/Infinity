@@ -1,12 +1,12 @@
-let client = require('../../client');
+let client = require("../../client");
 let eris = client.eris;
-let gear = require('../../utils/gearboxes');
 let fs = require('fs');
 let config = JSON.parse(fs.readFileSync('./config.json', 'utf8'));
 let locale = require('../../utils/lang');
+let gear = require('../../utils/gearboxes');
 
 module.exports = {
-    label: 'money',
+    label: 'limpar',
     enabled: true,
     isSubcommand: false,
     generator: (message, args) => {
@@ -17,6 +17,8 @@ module.exports = {
             var Server = message.channel.guild;
             var Channel = message.channel;
             var Author = message.author;
+            //var Target = message.mentions[0];
+            var Member = message.member;
             if (Author.bot) return;
             var MSG = message.content;
 
@@ -24,17 +26,17 @@ module.exports = {
             var userDB = client.userDB;
             var userData = userDB.get(Author.id).modules;
 
-            //-----------------MAGIC---------------------
-            eris.createMessage(message.channel.id, locale(lang, "money.has").replace("${money}", userData.money));
-
+            var cont = message.content.slice(8);
+            eris.purgeChannel(message.channel.id, cont);
+            eris.createMessage(message.channel.id, locale(lang, "prune").replace("${count}", cont))
         } catch (err) {
             eris.createMessage(config.logChannel, `[${message.channel.guild.name}>>${message.channel.name}]${message.author.username}#${message.author.discriminator}:${this.label}\n\t>> ${err.response}\n\t${err.stack}`);
         }
     },
     options: {
-        description: 'Descrição',
+        description: 'Varra o chat',
         deleteCommand: false,
         caseInsensitive: true,
-        alias: ['ts']
+        alias: ['purge']
     }
 };
