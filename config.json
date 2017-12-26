@@ -1,6 +1,6 @@
 {
-    "token": "TOKEN",
-    "shardCount": 0,
+    "token": "Mzk1MTkyNTkxNzMxMzkyNTE1.DSPTaA.nWcblge22_18CoAEYSiHRX3wzjw",
+    "shardCount": 1,
     "botVersion": "",
     "prefix": ">",
     "adminIds": [""],
@@ -9,9 +9,8 @@
     "logDestroyer": "",
     "starbucks": "",
     "logTimestamp": false,
-    "cleverbot": false,
     "inviteLink": "",
-    "errorMessage": "Shit, an error. Report this to Noculi and tell him he sucks.",
+    "errorMessage": "",
     "bannedGuildIds": [],
     "whitelistedGuildIds": []
 }
