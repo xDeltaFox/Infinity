@@ -4,10 +4,8 @@
     "description": "bot",
     "main": "infinity.js",
     "dependencies": {
-        "bluebird": "^3.5.1",
         "eris": "^0.8.2",
-        "eris-additions": "^1.2.5",
-        "mongoose": "^4.13.7"
+        "eris-additions": "^1.2.5"
     },
     "devDependencies": {},
     "scripts": {
