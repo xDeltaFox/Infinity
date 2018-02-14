@@ -1,0 +1,47 @@
+{
+    "err": {
+        "text1": "Oh, achei que fosse esperto o suficiente pra saber que tem que mencionar alguém.",
+        "text2": ":fire: Vou te queimar, se continuar fazendo coisa que não deve. tem que ter a permissão `/perm/`",
+        "text3": ":no_entry_sign: Errow, mencione alguém, besta.",
+        "text4": "Me chama, e fica inativo me deixando no vacuo, muito obrigrado por nada."
+    },
+    "ameaça": {
+        "main": ":gun:  |  **Gravidade do Crime: (${numero}%)**\n**${message.mentions[0].username}** ${aleatorio[0]}",
+        "texto1": "é um ninguém. Então nada será feito, pra sua sorte, seu safado.",
+        "texto2": "é suspeito de um crime que ocorreu, há uns dias. Então nosso umpas lupas ficaram na sua cola, pro caso de você resolva matar alguém.",
+        "texto3": "está planejando a dominação do mundo. É bom alguém para-lo, antes que eu taque fogo na porra toda. :fire:",
+        "texto4": "é a pessoa mais procurada da policia federal. Cacete tem um monte de vagabundos online, e ninguém faz porra nenhuma.",
+        "texto5": "queime, queime descraçado. :fire: nenhum procurado pela Interpol vai passa por mim, e ficar impune, seu merda."
+    },
+    "ban": {
+        "text1": "/USER/ foi banido com sucesso\nMotivo: /MOTIVO/"
+    },
+    "betroll": {
+        "text1": "**##### Hora de checar! #####**\nSeus numeros foram: ${one} - ${two} - ${three}\n##### Duplos, Parábens! #####\n${message.author.mention}, você ganhou: ${content[1]*2} rows",
+        "text2": "**##### Hora de checar! #####**\nSeus numeros foram: ${one} - ${two} - ${three}\n${message.author.mention}, não foi dessa vez, você perdeu: ${content[1]} rows",
+        "text3": "${message.author.mention} - Você não tem dinheiro suficiente."
+    },
+    "kick": "Botei ${ment[0].username}, pra fora com minha bota magica. :boot:\nRazão: ${content[2]}",
+    "mate": {
+        "txt1": "${message.author.username} matou ${message.mentions[0].username}",
+        "txt2": "${message.author.username} falhou em matar ${message.mentions[0].username}",
+        "consequencia1": "**${name}** foi preso por assassinato",
+        "consequencia2": "**${name}** foi preso por tentativa de assassinato",
+        "consequencia3": "**${name}** fugiu das autoridades locais"
+    },
+    "pokemon": {
+        "habtext": "**Nome**: ${abilitie.ability.name} **Escondido**: ${abilitie.is_hidden}\n",
+        "description": "**Altura**: ${response.height}\n**Peso**: ${response.weight}\n**Exp**: ${response.base_experience}",
+        "fields1": "Tipos",
+        "fields2": "Adicionado na Geração",
+        "fields3": "Número na Pokédex",
+        "fields4": "Habilidades",
+        "fields5": "Treinamento",
+        "fields6": "Evoluções",
+        "fieldssoon": "Em Breve",
+        "err": "Não sou nenhum, adivinho... Fale qual pokemon, quer saber?"
+    },
+    "Privilegelow": "Meu privilegio é muito baixo, para prosseguir.",
+    "prune": "Foi deletado /COUNT/ menssages.",
+    "suicidio": "${message.author.username} cometeu suicidio"
+}

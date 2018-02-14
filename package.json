@@ -5,7 +5,11 @@
     "main": "infinity.js",
     "dependencies": {
         "eris": "^0.8.2",
-        "eris-additions": "^1.2.5"
+        "eris-additions": "^1.2.5",
+        "moment": "^2.20.1",
+        "moment-timezone": "^0.5.14",
+        "mongoose": "^5.0.4",
+        "node-trello": "^1.3.0"
     },
     "devDependencies": {},
     "scripts": {

@@ -1,0 +1,19 @@
+{
+    "ajuda": "help",
+
+    "exe": "eval",
+    "execute": "eval",
+    "e": "eval",
+
+    "chutar": "kick",
+
+    "banir": "ban",
+
+    "limpar": "prune",
+    "clear": "prune",
+
+    "random": "random-animal",
+    "jogando": "players",
+    "pokedex": "pokemon",
+    "rot": "rotation"
+}

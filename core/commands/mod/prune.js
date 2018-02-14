@@ -1,35 +1,22 @@
-var Eris = require('../../infinity.js');
-var eris = Eris.eris;
-var fs = require('fs');
-var config = JSON.parse(fs.readFileSync('./config.json', 'utf8'));
+'use strict';
 
 module.exports = {
     label: 'prune',
     enabled: true,
-    isSubcommand: false,
-    generator: (message, args) => {
+    generator: async(eris, serverDB, channelDB, userDB, language, args, message) => {
         try {
-            eris.createMessage(config.starbucks, "[`" + message.channel.guild.name + "`" + "~>" + "`" + message.channel.name + "`]" + "**" + message.author.username + "**:" + message.content);
-            var cont = message.content.slice(8);
+            //Set Them Up
+            var Server = message.channel.guild;
+            var Channel = message.channel;
+            var Author = message.author;
+            var Target = message.mentions;
+            var Member = message.member;
+
+            var cont = message.content.slice(message.content.split(' ')[0].length + 1);
             eris.purgeChannel(message.channel.id, cont);
-            switch (message.channel.guild.region) {
-                case "brazil":
-                    eris.createMessage(message.channel.id, "Foi deletado " + cont + " menssages.")
-                    break;
-                case "us-central":
-                    eris.createMessage(message.channel.id, "It has been deleted " + cont + " posts.")
-                    break;
-                default:
-                    eris.createMessage(message.channel.id, "It has been deleted " + cont + " posts.")
-            }
+            eris.createMessage(message.channel.id, language.prune.replace("/COUNT/", cont));
         } catch (err) {
             eris.createMessage(config.logChannel, "```\n" + `[${message.channel.guild.name}>>${message.channel.name}]${message.author.username}#${message.author.discriminator}:prune\n\t>> ${err.response}\n\t${err.stack}` + "\n```");
         }
-    },
-    options: {
-        description: 'Varra o chat',
-        deleteCommand: false,
-        caseInsensitive: true,
-        alias: ['purge']
     }
 };

@@ -1,0 +1,38 @@
+{
+    "err": {
+        "text1": "Dude, mention somebody.",
+        "text2": "I'll burn you if you keep doing something you should not. You must have permission `/perm/`",
+        "text3": ":no_entry_sign: Errow, mention somebody, beast.",
+        "text4": "Call me, and stay inactive leaving me in the vacuum, very obliged for nothing."
+    },
+    "ban": {
+        "text1": "/USER/ was banned successfully\nReason: /MOTIVO/"
+    },
+    "betroll": {
+        "text1": "**##### Hora de checar! #####**\nSeus numeros foram: ${one} - ${two} - ${three}\n##### Duplos, Parábens! #####\n${message.author.mention}, você ganhou: ${content[1]*2} rows",
+        "text2": "**##### Hora de checar! #####**\nSeus numeros foram: ${one} - ${two} - ${three}\n${message.author.mention}, não foi dessa vez, você perdeu: ${content[1]} rows",
+        "text3": "${message.author.mention} - Você não tem dinheiro suficiente."
+    },
+    "mate": {
+        "txt1": "${message.author.username} killed ${message.mentions[0].username}",
+        "txt2": "${message.author.username} failed to kill ${message.mentions[0].username}",
+        "consequencia1": "**${name}** was arrested for murder",
+        "consequencia2": "**${name}** was arrested for attempted murder",
+        "consequencia3": "**${name}** escaped from local authorities"
+    },
+    "pokemon": {
+        "habtext": "**Name**: ${abilitie.ability.name} **Hidden**: ${abilitie.is_hidden}\n",
+        "description": "**Height**: ${response.height}\n**Weight**: ${response.weight}\n**Exp**: ${response.base_experience}",
+        "fields1": "Types",
+        "fields2": "Added on Generation",
+        "fields3": "Number in Pokédex",
+        "fields4": "Skills",
+        "fields5": "Training",
+        "fields6": "Evolution",
+        "fieldssoon": "Coming soon",
+        "err": "I'm not one, I guess ... Speak which pokemon, you know?"
+    },
+    "Privilegelow": "My highest position, you do not have sufficient privilege to do such an action, leave my office higher, to continue",
+    "prune": "${cont} messages have been deleted.",
+    "suicidio": "${message.author.username} committed suicide"
+}
